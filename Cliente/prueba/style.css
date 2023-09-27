@@ -1,0 +1,9 @@
+*{
+    margin: 0px;
+    padding: 0px;
+};
+#cabecera{
+background-color: red;
+height: 100px;
+width: 100px;
+};
