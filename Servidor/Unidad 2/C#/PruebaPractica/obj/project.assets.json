@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/horabaixa/Escriptori/TODO/GITHUB/Servidor/Unidad 1/C#/C#.csproj",
-      "projectName": "C#",
-      "projectPath": "/home/horabaixa/Escriptori/TODO/GITHUB/Servidor/Unidad 1/C#/C#.csproj",
+      "projectUniqueName": "/home/horabaixa/Escriptori/TODO/GITHUB/Servidor/Unidad 2/C#/PruebaPractica/PruebaPractica.csproj",
+      "projectName": "PruebaPractica",
+      "projectPath": "/home/horabaixa/Escriptori/TODO/GITHUB/Servidor/Unidad 2/C#/PruebaPractica/PruebaPractica.csproj",
       "packagesPath": "/home/horabaixa/.nuget/packages/",
-      "outputPath": "/home/horabaixa/Escriptori/TODO/GITHUB/Servidor/Unidad 1/C#/obj/",
+      "outputPath": "/home/horabaixa/Escriptori/TODO/GITHUB/Servidor/Unidad 2/C#/PruebaPractica/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/horabaixa/.nuget/NuGet/NuGet.Config"

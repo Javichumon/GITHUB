@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Servidor", "Servidor", "{D9176531-74D8-46EA-B277-189DACAF4251}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unidad 1", "Unidad 1", "{B5524370-5F19-4EE9-A0CD-CC86317C9EFF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C#", "Servidor\Unidad 1\C#\C#.csproj", "{BFCCE8CA-7A13-4FBC-9BF5-ECC17A04FAB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unidad 2", "Unidad 2", "{231A5857-7267-4B63-B1BC-F0676EE253A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C#", "C#", "{EF595F08-5E31-49FD-B593-96C8BB34B130}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C#", "Servidor\Unidad 2\C#\EjercicioMetodos\C#.csproj", "{011CE5CE-861A-40BD-887E-BA07355D0D8B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFCCE8CA-7A13-4FBC-9BF5-ECC17A04FAB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFCCE8CA-7A13-4FBC-9BF5-ECC17A04FAB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFCCE8CA-7A13-4FBC-9BF5-ECC17A04FAB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFCCE8CA-7A13-4FBC-9BF5-ECC17A04FAB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{011CE5CE-861A-40BD-887E-BA07355D0D8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011CE5CE-861A-40BD-887E-BA07355D0D8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011CE5CE-861A-40BD-887E-BA07355D0D8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011CE5CE-861A-40BD-887E-BA07355D0D8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B5524370-5F19-4EE9-A0CD-CC86317C9EFF} = {D9176531-74D8-46EA-B277-189DACAF4251}
+		{BFCCE8CA-7A13-4FBC-9BF5-ECC17A04FAB1} = {B5524370-5F19-4EE9-A0CD-CC86317C9EFF}
+		{231A5857-7267-4B63-B1BC-F0676EE253A0} = {D9176531-74D8-46EA-B277-189DACAF4251}
+		{EF595F08-5E31-49FD-B593-96C8BB34B130} = {231A5857-7267-4B63-B1BC-F0676EE253A0}
+		{011CE5CE-861A-40BD-887E-BA07355D0D8B} = {EF595F08-5E31-49FD-B593-96C8BB34B130}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D39C7F4A-3938-40B5-AD37-4429D426E6BB}
+	EndGlobalSection
+EndGlobal
