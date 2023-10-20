@@ -10,25 +10,28 @@
 
 <body>
     <h1>Chess</h1>
-    
+
     <p>
         <?php
 
-
         echo "<table>";
-        for ($a = 1; $a <= 4; $a++) {
+        for ($a = 0; $a < 8; $a++) {
             echo "<tr>";
-            for ($i = 1; $i <= 4; $i++) {
-                echo "<td class='white'></td>";
-                echo "<td class='black'></td>";
+            for ($i = 0; $i < 8; $i++) {
+                if(($a+$i) % 2)
+                {
+                    echo "<td class='black'></td>";
+                }
+                else 
+                {
+                    echo "<td class='white'></td>";
+                    
+                }
             }
             echo "<tr>";
-            for ($i = 1; $i <= 4; $i++) {
-                echo "<td class='black'></td>";
-                echo "<td class='white'></td>";
-            }
         }
-        echo "</table>";
+        echo "</table>";        
+
         ?>
     </p>
 </body>
