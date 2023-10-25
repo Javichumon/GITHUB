@@ -5,6 +5,20 @@ namespace ChessAPI
     //Para que sea válido, las 2 variables _row y _column han de estar dentro del rango [0..7]
     public class BoardPosition
     {
+        public bool IsValid()
+        {
+            
+            if(!ValidateRangeNumber(_row))
+            {
+                return false;
+                
+            }
+            else if (!ValidateRangeNumber(_column))
+            {
+                return false;
+            }
+            return true;
+        }
         private int _row;
         private int _column;
 

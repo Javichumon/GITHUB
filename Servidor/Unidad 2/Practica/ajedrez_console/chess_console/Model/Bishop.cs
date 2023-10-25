@@ -4,6 +4,8 @@ namespace ChessAPI.Model
     {
         public Bishop(ColorEnum color) : base(color)
         {
+            
+           
         }
 
         public override int GetScore()

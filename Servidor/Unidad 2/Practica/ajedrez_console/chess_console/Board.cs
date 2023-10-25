@@ -61,7 +61,7 @@ namespace ChessAPI
         //en otras clases si lo consideras necesario...
         private void _Move(Movement movement)
         {
-
+            
         }
 
         // TODO Practica 02_4
@@ -70,12 +70,28 @@ namespace ChessAPI
         //Para ver el formato del pintado, leer enunciado de la práctica
         public void Draw()
         {
-            for (int i = 0; i < 8; i++)
+            for (int filas = 0; filas < 8; filas++)
             {
-                for (int j = 0; j < 8; j++)
+                for (int columnas = 0; columnas < 8; columnas++)
                 {
-                    
+                    if(board[filas, columnas]!= null)
+                    {
+
+                        Console.Write(board[filas, columnas].GetCode());
+                    }
+                    else
+                    {
+                        if((filas+columnas) % 2 == 0)
+                        {
+                            Console.Write("|0000|");
+                        }
+                        else
+                        {
+                            Console.Write("|####|");
+                        }
+                    }
                 }
+                Console.WriteLine();
             }
         }
         // TODO Practica 02_5
