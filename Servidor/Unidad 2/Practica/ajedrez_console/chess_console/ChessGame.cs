@@ -21,7 +21,7 @@ namespace ChessAPI
             //Instancia un movimiento dentro del tablero, desde una posición
             //en la que haya una pieza hasta otro. De momento no se realizan
             //validaciones salvo que sea una posición que esté dentro del tablero.
-            
+            this.board.Move();
             // this.board.Move(movement);
         }
 

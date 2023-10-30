@@ -47,7 +47,7 @@ namespace ChessAPI
         }
 
 
-        
+
         public void Move(Movement movement)
         {
             if (movement.IsValid())
@@ -61,7 +61,14 @@ namespace ChessAPI
         //en otras clases si lo consideras necesario...
         private void _Move(Movement movement)
         {
+            int sourceRow = movement.FromBoardPosition.Row;
+            int sourceColumn = movement.FromBoardPosition.Column;
+            int destinationRow = movement.ToBoardPosition.Row;
+            int destinationColumn = movement.ToBoardPosition.Column;
+
             
+                board[destinationRow, destinationColumn] = board[sourceRow, sourceColumn];
+                board[sourceRow, sourceColumn] = null;
         }
 
         // TODO Practica 02_4
@@ -74,14 +81,14 @@ namespace ChessAPI
             {
                 for (int columnas = 0; columnas < 8; columnas++)
                 {
-                    if(board[filas, columnas]!= null)
+                    if (board[filas, columnas] != null)
                     {
 
                         Console.Write(board[filas, columnas].GetCode());
                     }
                     else
                     {
-                        if((filas+columnas) % 2 == 0)
+                        if ((filas + columnas) % 2 == 0)
                         {
                             Console.Write("|0000|");
                         }
@@ -104,7 +111,7 @@ namespace ChessAPI
         public string GetBoardState()
         {
             string result = string.Empty;
-            
+
             return result;
 
         }
