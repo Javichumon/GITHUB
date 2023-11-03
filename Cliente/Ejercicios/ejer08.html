@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer08</title>
+    <script src='main.js'></script>
+</head>
+<body>
+    <label for="text" name="email"  id="text">The reference contains descriptions and examples of all string properties and methods.</label>
+    <br>
+    <button type="button" onclick="data()">Submit</button>
+    <br>
+    <p id="mitad1">La primera mitad es: </p><br>
+    <p id="mitad2">La segunda mitad es: </p>
+    <script>
+        function data() {
+            let text = document.getElementById("text").value;
+            let data = text.split(" ");
+            let mitad1 = data[1];
+            let mitad2 = data[2];
+            document.getElementById("mitad1").textContent = "La primera mitad es: " + mitad1;
+            document.getElementById("mitad2").textContent = "La segunda mitad es: " + mitad2;
+        }
+    </script>
+</body>
+</html>

@@ -8,6 +8,7 @@
             ChessGame chess = new ChessGame();
             chess.DrawBoard();
             chess.TryToMove();
+            Console.WriteLine();
             chess.DrawBoard();
             var code = chess.GetBoardAsStringToChessWeb();
             Console.WriteLine(code);

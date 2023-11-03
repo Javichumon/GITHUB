@@ -66,9 +66,9 @@ namespace ChessAPI
             int destinationRow = movement.ToBoardPosition.Row;
             int destinationColumn = movement.ToBoardPosition.Column;
 
-            
-                board[destinationRow, destinationColumn] = board[sourceRow, sourceColumn];
-                board[sourceRow, sourceColumn] = null;
+
+            board[destinationRow, destinationColumn] = board[sourceRow, sourceColumn];
+            board[sourceRow, sourceColumn] = null;
         }
 
         // TODO Practica 02_4
@@ -77,18 +77,18 @@ namespace ChessAPI
         //Para ver el formato del pintado, leer enunciado de la práctica
         public void Draw()
         {
-            for (int filas = 0; filas < 8; filas++)
+            for (int row = 0; row < 8; row++)
             {
-                for (int columnas = 0; columnas < 8; columnas++)
+                for (int col = 0; col < 8; col++)
                 {
-                    if (board[filas, columnas] != null)
+                    if (board[row, col] != null)
                     {
 
-                        Console.Write(board[filas, columnas].GetCode());
+                        Console.Write(board[row, col].GetCode());
                     }
                     else
                     {
-                        if ((filas + columnas) % 2 == 0)
+                        if ((row + col) % 2 == 0)
                         {
                             Console.Write("|0000|");
                         }
@@ -110,7 +110,23 @@ namespace ChessAPI
 
         public string GetBoardState()
         {
-            string result = string.Empty;
+            List<string> pieces = new List<string>();
+
+            for (int row = 0; row < 8; row++)
+            {
+                for (int col = 0; col < 8; col++)
+                {
+                    Piece piece = board[row, col];
+                    if (piece != null)
+                    {
+                        string pieceCode = piece.GetCode();
+                        
+                        pieceCode = pieceCode.Replace("|", "");
+                        pieces.Add(pieceCode);
+                    }
+                }
+            }
+            string result = string.Join(",", pieces); ;
 
             return result;
 

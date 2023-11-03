@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer06</title>
+    <script src='main.js'></script>
+</head>
+<body>
+    <form action="">
+        <label for="email">Introduce un email:</label>
+        <input type="text" name="email" id="email"><br>
+        <button type="button" onclick="data()">Enviar</button>
+        <br>
+        <p id="user">El usuario es:</p><br>
+        <p id="domain">El dominio es:</p>
+    </form>
+    <script>
+        function data() {
+            let email = document.getElementById("email").value;
+            let data = email.indexOf("@");
+            let usuario = email.slice(0,data);
+            let dominio = email.slice(data+1);
+            document.getElementById("user").textContent = "El usuario es: " + usuario;
+            document.getElementById("domain").textContent = "El dominio es: " + dominio;
+        }
+    </script>
+ 
+</body>
+</html>

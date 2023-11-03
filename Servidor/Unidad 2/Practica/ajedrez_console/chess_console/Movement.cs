@@ -24,6 +24,7 @@ namespace ChessAPI
             get { return _toBoardPosition; }
             set { _toBoardPosition = value; }
         }
+        
         /// TODO Practica 02_1
         /// Ha de validar el rango de los 2 objetos BoardPosition encapsulados
         /// en esta clase.

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer09</title>
+    <script src='main.js'></script>
+</head>
+<body>
+    <script>
+        // Pedir al usuario que ingrese una cadena de texto
+        var inputText = prompt("Por favor, ingresa una cadena de texto:");
+
+        // Dividir la cadena de texto en palabras
+        var palabras = inputText.split(" ");
+
+        // Crear un párrafo para mostrar la información en la página
+        var resultado = document.createElement("p");
+
+        // Mostrar el número de palabras
+        resultado.textContent = "Número de palabras: " + palabras.length;
+
+        // Mostrar la primera y última palabra
+        resultado.textContent += "Primera palabra: " + palabras[0];
+        resultado.textContent += "Última palabra: " + palabras[palabras.length - 1];
+
+        // Mostrar las palabras en orden inverso
+        var palabrasInverso = palabras.slice().reverse();
+        resultado.textContent += "Palabras en orden inverso: " + palabrasInverso.join(" ");
+
+        // Mostrar las palabras ordenadas de a a z
+        var palabrasOrdenadasAZ = palabras.slice().sort();
+        resultado.textContent += "Palabras ordenadas de a a z: " + palabrasOrdenadasAZ.join(" ");
+
+        // Mostrar las palabras ordenadas de z a a
+        var palabrasOrdenadasZA = palabras.slice().sort().reverse();
+        resultado.textContent += "Palabras ordenadas de z a a: " + palabrasOrdenadasZA.join(" ");
+
+        // Comprobar si la frase es un palíndromo
+        
+        
+        // Agregar el párrafo al cuerpo del documento
+        document.body.appendChild(resultado);
+    </script>
+</body>
+</html>

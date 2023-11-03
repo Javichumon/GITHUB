@@ -3,16 +3,30 @@ table {
     width: 850px;
     border: black 2px solid;
     margin: 0 auto;
+    padding: 0 auto;
 }
 
 .white {
-    background-color: white;
+    background-color: rgb(238, 231, 231);
 }
 
 .black {
-    background-color: black;
+    background-color: green;
 }
 
 .table {
     text-align: center;
+    border-collapse: collapse;
+}
+body{
+    background-image: url(img/fondo.jpg);
+    color: #FFFFFF;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+table,tr,td{
+    border: none;
+    margin-top: 0px;
+    padding-top: 0px;
 }
