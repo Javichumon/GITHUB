@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <p>Objecte date amb la data 21/03/2009</p>
+    <p id="fecha1"></p>
+    <p>La mateixa data amb el format exacte de l enunciat</p>
+    <p id="fecha2"></p>
+    <script>
+        let fecha = new Date("2009/03/21 12:15");
+
+
+        document.getElementById("fecha1").innerHTML = fecha;
+        document.getElementById("fecha2").innerHTML = fecha.getDate() + "/0" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear() + "  " + fecha.getHours() + ":" + fecha.getMinutes();
+        
+    </script>
+
+</body>
+
+</html>

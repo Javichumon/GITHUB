@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer20</title>
+    <script>
+        function calcularLetraDNI() {
+  
+            var numeroDNI = document.getElementById('numeroDNI').value;
+
+            var numero = parseInt(numeroDNI);
+
+            if (isNaN(numero) || numero < 0 || numero > 99999999) {
+                alert('El número proporcionado no es válido. Por favor, introduzca un número válido.');
+                document.getElementById('numeroDNI').focus();
+                return;
+            }
+
+            
+            var resto = numero % 23;
+            var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
+            var letra = letras[resto];
+
+            
+            var dniCompleto = numero + letra;
+            document.getElementById('dniCompleto').value = dniCompleto;
+        }
+    </script>
+</head>
+<body>
+    <h1>Calculadora de letra de DNI</h1>
+    <label for="numeroDNI">Introduce el número de DNI:</label>
+    <input type="text" id="numeroDNI" oninput="calcularLetraDNI()">
+    <br>
+    <label for="dniCompleto">DNI con letra:</label>
+    <input type="text" id="dniCompleto" readonly>
+</body>
+</html>
