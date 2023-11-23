@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Ejercicio 15</title>
+</head>
+<body>
+   <p id="dias"></p>
+   <p id="horas"></p>
+   <p id="minutos"></p>
+   <p id="segundos"></p>
+
+
+   <script>
+       let date1 = new Date("2015-01-01T01:00:01");
+       let date2 = new Date("2015-02-14T02:05:23");
+       let diffMs = date2 - date1;
+       let diffDays = Math.floor(diffMs / 86400000);
+       let diffHrs = Math.floor((diffMs % 86400000) / 3600000);
+       let diffMin = Math.floor(((diffMs% 86400000) % 3600000) / 60000);
+       let diffSec = Math.floor((((diffMs% 86400000) % 3600000) % 60000)/1000);
+      
+
+
+       document.getElementById("dias").textContent = "Días: "+diffDays;
+       document.getElementById("horas").textContent = "Horas: "+diffHrs;
+       document.getElementById("minutos").textContent = "Minutos: "+diffMin;
+       document.getElementById("segundos").textContent = "Segundos: "+diffSec;
+   </script>
+</body>
+</html>

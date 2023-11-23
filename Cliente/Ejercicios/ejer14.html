@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer14</title>
+</head>
+<body>
+    <p>Objecte date amb la data 21/03/2009</p>
+  <p id="fecha1"></p>
+   <p>Data sumant 3 dies</p>
+   <p id="fecha2"></p>
+   <p>Data sumant 5 mesos</p>
+   <p id="fecha3"></p>
+   <p>Finalment, restant 10 anys</p>
+   <p id="fecha4"></p>
+
+
+   <script>
+       let fecha = new Date("2009/03/21 12:15");
+
+
+
+
+       document.getElementById("fecha1").innerHTML=fecha;
+
+
+       fecha.setDate(fecha.getDate()+3);
+
+
+       document.getElementById("fecha2").innerHTML=fecha;
+
+
+
+
+       fecha.setMonth(fecha.getMonth()+5);
+
+
+       document.getElementById("fecha3").innerHTML=fecha;
+
+
+       fecha.setYear(fecha.getYear()-10);
+
+
+       document.getElementById("fecha4").innerHTML=fecha;
+  
+   </script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Ejercicio 23</title>
+</head>
+<body>
+   <input type="text" name="txt" id="txt">
+   <br>
+   <button type="button" onclick="palindromo()">Click</button>
+   <p id="res"></p>
+   <script>
+      
+       function palindromo(){
+           let txt = document.getElementById("txt").value;
+           let res = document.getElementById("res");
+          
+           let frase = txt.split(" ").join("");
+           frase = frase.split("").reverse().join("").toLowerCase();
+          
+           if (frase === txt.split(" ").join("").toLowerCase()) {
+               res.textContent = "Palindromo";
+           }else{
+               res.textContent = "No palindromo";
+           }
+
+
+       }
+   </script>
+</body>
+</html>

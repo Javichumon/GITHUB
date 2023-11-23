@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer19</title>
+</head>
+<body>
+    <p>suma dos numeros</p>
+   <p id="suma"></p>
+
+
+   <p>Palabra mas larga</p>
+   <p id="palabra"></p>
+
+
+
+
+   <script>
+       var valors = [true, 5, false, "hola", "Adios", 2];
+
+
+       var sum = 0;
+
+
+       var masLargo = "";
+       for (i = 0; i < valors.length; i++) {
+           if (typeof valors[i] == 'string') {
+
+
+               if (masLargo.length < valors[i].length) {
+                   masLargo = valors[i];
+               }
+           } else if (typeof valors[i] == 'number') {
+               sum = sum + valors[i]
+           }
+       }
+
+
+       document.getElementById("suma").innerHTML = sum;
+       document.getElementById("palabra").innerHTML = masLargo;
+
+
+   </script>
+
+</body>
+</html>

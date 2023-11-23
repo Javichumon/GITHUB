@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Ejer28</title>
+</head>
+<body>
+   <p>Como se dice "amarillo" en ingles?</p>
+   <select name="" id="p1">
+       <option value="green">Green</option>
+       <option value="yelow">Yelow</option>
+       <option value="yellow">Yellow</option>
+   </select>
+   <p>Como se dice "gato" en ingles?</p>
+   <select name="" id="p2">
+       <option value="gatow">Gatow</option>
+       <option value="moix">Moix</option>
+       <option value="cat">Cat</option>
+   </select>
+   <p>Como se dice "ventana" en ingles?</p>
+   <select name="" id="p3">
+       <option value="window">Window</option>
+       <option value="giundou">Guindou</option>
+       <option value="linux">Linux</option>
+   </select>
+   <p>Como se dice "home" en ingles?</p>
+   <select name="" id="p4">
+       <option value="casa">Casa</option>
+       <option value="home">Home</option>
+       <option value="notengo">No tengo casa</option>
+   </select>
+   <br><br>
+   <button onclick="validar()">validar</button>
+
+
+   <p id="puntos"></p>
+
+
+   <script>
+       function validar(){
+           let puntos = 0;
+           let p1 = document.getElementById("p1");
+           let eleccion = p1.options[p1.selectedIndex].value;
+
+
+           if (eleccion == "yellow"){
+               console.log("yellow");
+               puntos++;
+           }
+
+
+           let p2 = document.getElementById("p2");
+           let eleccion2 = p2.options[p2.selectedIndex].value;
+           if(eleccion2 == "cat"){
+               console.log("cat");
+               puntos++;
+           }
+
+
+           let p3 = document.getElementById("p3");
+           let eleccion3 = p3.options[p3.selectedIndex].value;
+           if(eleccion3 == "window"){
+               console.log("window");
+               puntos++;
+           }
+
+
+           let p4 = document.getElementById("p4");
+           let eleccion4 = p4.options[p4.selectedIndex].value;
+           if(eleccion4 == "home"){
+               console.log("home");
+               puntos++;
+           }
+
+
+           document.getElementById("puntos").innerHTML = "Tienes un "+puntos+" sobre 4";
+       }
+   </script>
+
+
+</body>
+</html>

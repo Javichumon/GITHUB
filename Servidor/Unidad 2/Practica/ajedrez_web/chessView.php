@@ -12,27 +12,45 @@
     <h1>Chess</h1>
 
     <p>
-        <?php
+    <?php
+        function DrawChessGame($board) {
+        $pieces = explode(",", $board);
 
-        echo "<table>";
-        for ($a = 0; $a < 8; $a++) {
-            echo "<tr>";
-            for ($i = 0; $i < 8; $i++) {
-                if(($a+$i) % 2)
-                {
-                    echo "<td class='black'></td>";
-                }
-                else 
-                {
-                    echo "<td class='white'></td>";
-                    
-                }
-            }
-            echo "<tr>";
+        if (count($pieces) != 64) {
+        echo "La cadena de texto debe tener exactamente 64 elementos para llenar el tablero de ajedrez.";
+        return;
         }
-        echo "</table>";        
 
-        ?>
+        echo '<table>';
+        $index = 0;
+        for ($row = 0; $row < 8; $row++) {
+        echo '<tr>';
+
+        for ($col = 0; $col < 8; $col++) {
+
+            $class = ($row + $col) % 2 == 0 ? 'white' : 'black';
+            echo '<td class="' . $class . '">';
+
+            if (!empty($pieces[$index])) {
+                $pieceImage = 'img/' . $pieces[$index] . '.png';
+                echo '<img src="' . $pieceImage . '" alt="' . $pieces[$index] . '">';
+            }
+
+            echo '</td>';
+            $index++;
+        }
+        echo '</tr>';
+        }
+        echo '</table>';
+        }
+
+
+
+        $board = "ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH";
+        DrawChessGame($board);
+    ?>
+
+
     </p>
 </body>
 

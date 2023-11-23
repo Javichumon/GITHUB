@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <title>Ejer24</title>
+</head>
+<body>
+   <b>Files x Columnes</b> <br>
+   <input id="srcFil" type="number"> <b>x</b> <input type="number" id="srcCol">
+   <br> <br>
+   <button onclick="dibujar()">Dibujar</button>
+   <pre id="res"></pre>
+
+
+   <script>
+       function dibujar() {
+           let srcFil = document.getElementById("srcFil").value;
+           let srcCol = document.getElementById("srcCol").value;
+           let res = document.getElementById("res");
+
+
+           res.innerHTML = "";
+
+
+           for (let filas = 0; filas <= srcFil; filas++) {
+               if (filas == 0) {
+                   for (let col = 0; col <= srcCol; col++) {
+                       res.innerHTML += "#";
+                   }
+                   res.innerHTML += "\n";
+                   filas++;
+               } else if (filas == srcFil) {
+                   for (let col = 0; col <= srcCol; col++) {
+                       res.innerHTML += "#";
+                   }
+               } else {
+                   res.innerHTML += "#";
+                   for (let col = 0; col <= srcCol-2; col++) {
+                       res.innerHTML += " ";
+                   }
+                   res.innerHTML += "#\n";
+               }
+           }
+       }
+   </script>
+</body>
+</html>

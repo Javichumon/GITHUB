@@ -1,10 +1,3 @@
-table {
-    height: 850px;
-    width: 850px;
-    border: black 2px solid;
-    margin: 0 auto;
-    padding: 0 auto;
-}
 
 .white {
     background-color: rgb(238, 231, 231);
@@ -14,19 +7,29 @@ table {
     background-color: green;
 }
 
-.table {
-    text-align: center;
-    border-collapse: collapse;
-}
 body{
     background-image: url(img/fondo.jpg);
-    color: #FFFFFF;
+    color: white;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
-table,tr,td{
-    border: none;
-    margin-top: 0px;
-    padding-top: 0px;
+table {
+    border-collapse: collapse;
+    width: 750px;
+    height: 750px;
+    margin: auto;
+}
+
+td {
+    width: 12.5%;
+    height: 12.5%;
+    text-align: center;
+}
+
+
+img {
+    width: 80px;
+    height: 80px;
+    
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejer 26</title>
+</head>
+<body>
+    <script>
+       
+        function getRandomNumber() {
+            return Math.floor(Math.random() * 256);
+        }
+
+        
+        function setRandomBackgroundColor() {
+            var red = getRandomNumber();
+            var green = getRandomNumber();
+            var blue = getRandomNumber();
+            var randomColor = "rgb(" + red + "," + green + "," + blue + ")";
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        window.onload = setRandomBackgroundColor;
+    </script>
+</body>
+</html>

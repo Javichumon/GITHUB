@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <title>Ejer10</title>
+</head>
+<body>
+   <p>Introdueix un nombre decimal:</p>
+   <input id="src" type="text"> <button onclick="toOctal()">Submit</button>
+   <p id="res"></p>
+
+
+   <script>
+       function toOctal() {
+           let num = parseInt(document.getElementById("src").value);
+           let res = document.getElementById("res");
+
+
+           if (!isNaN(num)) {
+               res.innerHTML = num.toString(8);
+           } else {
+               res.innerHTML = "Tienes que escribir un número"
+           }
+       }
+   </script>
+</body>
+</html>

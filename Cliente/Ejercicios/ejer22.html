@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Ejer22</title>
+</head>
+<body>
+   <script>
+       let secreto = Math.floor(Math.random()*101)+1;
+       document.write('<h1>Numero secreto</h1>');
+       document.write(secreto);
+       document.write('<p>Escribe el numero secreto</p>');
+       document.write('<input type"text" id="numero"></imput>');
+       document.write('<button onclick="comprobar()">Comprobar</button>');
+       document.write('<button onclick="rendirse()">Cancelar</button>');
+       document.write('<p id="respuesta"></p>');
+       let intentos = 1;
+
+
+       function comprobar(){
+          
+           let nuevoNumero = document.getElementById("numero").value;
+           if(isNaN(nuevoNumero) || nuevoNumero == ""){
+               document.getElementById("respuesta").innerHTML = "Escribe un numero";
+               return;
+           }
+           if(nuevoNumero > secreto)
+           {
+               document.getElementById("respuesta").innerHTML = "Menor";
+               intentos++;
+               return;
+           }
+           if(nuevoNumero < secreto)
+           {
+               document.getElementById("respuesta").innerHTML = "Mayor";
+               intentos++;
+               return;
+           }
+           if(nuevoNumero == secreto){
+               document.getElementById("respuesta").innerHTML = "Es correcto! Has llevado a cabo "+intentos+" intentos";
+               return;
+          
+           }
+
+
+           document.write(nuevoNumero);
+       }
+
+
+       function rendirse(){
+           document.write("CANCELANDO JUEGO");
+           volverAJugar();
+       }
+
+
+       function volverAJugar(){
+           document.write('<a href="ejer22.html"><button>Volver a jugar</button></a>');
+       }
+
+
+      
+   </script>
+</body>
+</html>

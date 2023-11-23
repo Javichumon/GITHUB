@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejer21</title>
+</head>
+<body>
+
+  <h2>Ejercicio 21</h2>
+
+  <label for="numberInput">Introdueix un nombre sencer:</label>
+  <br>
+  <input type="number" id="numberInput">
+  <button onclick="calculateFactorial()">Submit</button>
+
+  <p id="result"></p>
+
+  <script>
+    function calculateFactorial() {
+     
+      var number = document.getElementById('numberInput').value;
+
+      
+      number = parseInt(number);
+
+      
+      if (number === 0) {
+        document.getElementById('result').innerHTML = 'El factorial de 0 es 1';
+      } else {
+        
+        var factorial = 1;
+        for (var i = 1; i <= number; i++) {
+          factorial *= i;
+        }
+
+        
+        document.getElementById('result').innerHTML = 'El factorial de ' + number + ' es ' + factorial;
+      }
+    }
+  </script>
+
+</body>
+</html>
