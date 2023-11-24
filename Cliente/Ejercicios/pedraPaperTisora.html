@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedra, Paper, Tisora</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 970px;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .game-container {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+        }
+
+        .player-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hands {
+            display: flex;
+            justify-content: space-between;
+            width: 45%;
+        }
+
+        .hand {
+            font-size: 48px;
+            cursor: pointer;
+        }
+
+        .result {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Pedra, Paper, Tisora</h1>
+
+    <div class="game-container">
+        <div class="player-container">
+            <p>Jugador 1</p>
+            <div class="hands" id="player1Hands">
+                <div class="hand" onclick="play('🤜', 1)">🤜</div>
+                <div class="hand" onclick="play('🤚', 1)">🤚</div>
+                <div class="hand" onclick="play('🖖', 1)">🖖</div>
+            </div>
+        </div>
+
+        <div class="player-container">
+            <p>Jugador 2</p>
+            <div class="hands" id="player2Hands">
+                <div class="hand" onclick="play('🤛', 2)">🤛</div>
+                <div class="hand" onclick="play('🤚', 2)">🤚</div>
+                <div class="hand" onclick="play('🖖', 2)">🖖</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        let player1Choice = '';
+        let player2Choice = '';
+
+        function play(choice, player) {
+            if (player === 1) {
+                player1Choice = choice;
+            } else if (player === 2) {
+                if (choice === '🤛') {
+                    player2Choice = '🤛';
+                } else {
+                    player2Choice = choice;
+                }
+            }
+
+            if (player1Choice !== '' && player2Choice !== '') {
+
+                displayResult();
+            }
+        }
+
+        function displayResult() {
+            const resultElement = document.getElementById('result');
+
+            resultElement.innerHTML = `
+        Jugador 1: ${player1Choice} vs. Jugador 2: ${player2Choice}<br>
+        Resultat: ${getResult(player1Choice, player2Choice)}
+      `;
+
+            // Reiniciar elecciones después de mostrar el resultado
+            player1Choice = '';
+            player2Choice = '';
+        }
+
+        function getResult(player1, player2) {
+            if (player1 === player2) {
+                return 'Empat!';
+            } else if (
+                (player1 === '🤜' && player2 === '🖖') ||
+                (player1 === '🤚' && player2 === '🤛') ||
+                (player1 === '🖖' && player2 === '🤚')
+            ) {
+                return 'Guanya el Jugador 1!';
+            } else if (
+                (player2 === '🤛' && player1 === '🖖') ||
+                (player2 === '🤚' && player1 === '🤜') ||
+                (player2 === '🖖' && player1 === '🤚')
+            ) {
+                return 'Guanya el Jugador 2!';
+            } else if (
+                (player1 === '🤜' && player2 === '🤛')
+            ) {
+                return 'Empat!';
+            } else {
+                return 'Error';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
