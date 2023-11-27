@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
     <header>
-    <h1 id="welcome">¡Bienvenido a la mejor página de ajedrez!</h1>
+        <h1 id="welcome">¡Bienvenido a la mejor página de ajedrez!</h1>
     </header>
     <nav>
         <li><a class="link" href="new_gameView.php">Nueva partida</a></li>
@@ -16,9 +18,10 @@
     <main>
 
     </main>
-    
+
     <footer>
-        <p>© Protegida con derechos de copyright ©</p>
-    <footer>
+        <p>© Página protegida con derechos de copyright ©</p>
+    </footer>
 </body>
+
 </html>
