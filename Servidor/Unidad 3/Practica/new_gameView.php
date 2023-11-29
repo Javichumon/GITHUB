@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>New Game</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/png" href="img/icon.jpg">
 </head>
 
 <body>
@@ -16,25 +17,34 @@
         <li><a class="link" href="gameListView.php">Lista de partidas</a></li>
     </nav>
     <main>
-
+        
         <h2>Crear Nueva Partida</h2>
         <form action="boardView.php" method="post">
-            <label for="white_player">Nombre Jugador Piezas Blancas</label>
-            <select name="id_white_player" id="white_player">
+            <?php
+        require("chessBusinessRules.php");
+                $playerNameBL = new ChessBusinessRules();
+                $playerName = $playerNameBL->obtain();
+                
+                echo '<label for="white_player">Nombre Jugador Piezas Blancas</label>';
+                echo '<select name="id_white_player" id="white_player">';
 
-                <option value="1">Jugador1</option>
-                <option value="2">Jugador2</option>
+                foreach ($playerName as $names){
+                    echo "<option value=\"{$names->getNombre()}\">{$names->getNombre()}</option>";
+                    
+               }
 
-            </select>
+                echo '</select><br><br>';
 
-            <br><br>
-            <label for="black_player">Nombre Jugador Piezas Negras</label>
-            <select name="id_black_player" id="jblack_player">
-                <option value="3">Jugador3</option>
-                <option value="4">Jugador4</option>
-            </select>
+                echo '<label for="black_player">Nombre Jugador Piezas Negras</label>';
+                echo '<select name="id_black_player" id="black_player">';
 
-            <br><br>
+                foreach ($playerName as $names){
+                    echo "<option value=\"{$names->getNombre()}\">{$names->getNombre()}</option>";
+                    
+               }
+
+                echo '</select><br><br>';
+        ?> 
 
             <label for="title_game">Título de la Partida</label>
             <input type="text" name="title_game" id="title_game" required>
@@ -43,6 +53,7 @@
 
             <input type="submit" value="Aceptar" href="boardView.php">
         </form>
+
     </main>
 
     <footer>

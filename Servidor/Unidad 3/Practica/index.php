@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>!Ajedrez!</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/png" href="img/icon.jpg">
 </head>
 
 <body>

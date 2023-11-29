@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Board</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/png" href="img/icon.jpg">
+
 </head>
 
 <body>
@@ -16,6 +18,7 @@
         <li><a class="link" href="gameListView.php">Lista de partidas</a></li>
     </nav>
     <main>
+        
         <p>
             <?php
             function DrawChessGame($board)
