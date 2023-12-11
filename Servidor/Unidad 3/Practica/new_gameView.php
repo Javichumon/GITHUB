@@ -51,9 +51,15 @@
 
             <br><br>
 
-            <input type="submit" value="Aceptar" href="boardView.php">
+            <input type="submit" name="aceptar" value="Aceptar">
         </form>
 
+        <?php
+            if (isset($_POST['aceptar'])) {
+        
+            header("Location: boardView.php");
+        }
+        ?>
     </main>
 
     <footer>

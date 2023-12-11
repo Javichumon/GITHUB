@@ -17,7 +17,46 @@
         <li><a class="link" href="gameListView.php">Lista de partidas</a></li>
     </nav>
     <main>
-        
+    <table>
+    <?php
+        require("chessBusinessRules.php");
+
+
+        $chessBusiness = new ChessBusinessRules();
+
+
+        $gamesList = $chessBusiness->obtainGames();
+    ?>
+    <thead>
+        <tr>
+            <th class="thColor">ID</th>
+            <th class="thColor">Título</th>
+            <th class="thColor">Jugador Blanco</th>
+            <th class="thColor">Jugador Negro</th>
+            <th class="thColor">Fecha de Inicio</th>
+            <th class="thColor">Fecha de Fin</th>
+            <th class="thColor">Ganador</th>
+            <th class="thColor">Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach ($gamesList as $game) {
+            echo "<tr>";
+            echo "<td class='listAlignWhite'>" . $game->getID() . "</td>";
+            echo "<td class='listAlignBlack'>" . $game->getTitle() . "</td>";
+            echo "<td class='listAlignWhite'>" . $game->getWhite() . "</td>";
+            echo "<td class='listAlignBlack'>" . $game->getBlack() . "</td>";
+            echo "<td class='listAlignWhite'>" . $game->getStartDate() . "</td>";
+            echo "<td class='listAlignBlack'>" . $game->getEndDate() . "</td>";
+            echo "<td class='listAlignWhite'>" . $game->getWinner() . "</td>";
+            echo "<td class='listAlignBlack'>" . $game->getState() . "</td>";
+            echo "</tr>";
+        }
+        ?>
+    </tbody>
+</table>
+
     </main>
 
     <footer>

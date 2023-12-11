@@ -36,4 +36,16 @@ class ChessDataAccess
 		$query->execute();
 		
 	}
+	function obtainGames()
+    {
+        $conexion = mysqli_connect('localhost', 'root', '12345');
+        if (mysqli_connect_errno()) {
+            echo "Error al conectar a MySQL: " . mysqli_connect_error();
+        }
+        mysqli_select_db($conexion, 'chess_game');
+        $query = mysqli_prepare($conexion, "SELECT ID, title, white, black, startDate, endDate, winner, state FROM T_Matches");
+        $query->execute();
+        $result = $query->get_result();
+        return $result;
+    }
 }
