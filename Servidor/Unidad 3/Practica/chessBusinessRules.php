@@ -7,21 +7,26 @@ require("chessDataAccess.php");
 class ChessBusinessRules
 {
     private $_Nombre;
+    private $_ID;
 
 	function __construct()
     {
     }
 
-    function init($nombre)
+    function init($ID,$nombre)
     {
         $this->_Nombre = $nombre;
+        $this->_ID = $ID;
     }
 
     function getNombre()
     {
         return $this->_Nombre;
     }
-
+    function getID()
+    {
+        return $this->_ID;
+    }
 
     function obtain()
     {
@@ -31,15 +36,17 @@ class ChessBusinessRules
         foreach ($rs as $names)
         {
             $oNamesBusinessRules = new ChessBusinessRules();
-            $oNamesBusinessRules->Init($names['name']);
+            $oNamesBusinessRules->init($names['ID'],$names['name']);
+
             array_push($nameList,$oNamesBusinessRules);
         }
         
         return $nameList;
     }
-    public function insertGame($db, $gameData) {
+    public function insertGame($white, $black, $title) {
         
-        return $db->insertGameData($gameData);
+        $dataAcessObject = new ChessDataAccess();
+        $insertData = $dataAcessObject->insertGameData($white, $black, $title);
     }
 }
 

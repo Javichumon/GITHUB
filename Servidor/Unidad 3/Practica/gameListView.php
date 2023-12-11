@@ -17,7 +17,7 @@
         <li><a class="link" href="gameListView.php">Lista de partidas</a></li>
     </nav>
     <main>
-
+        
     </main>
 
     <footer>

@@ -19,7 +19,7 @@
     <main>
         
         <h2>Crear Nueva Partida</h2>
-        <form action="boardView.php" method="post">
+        <form action="startGame.php" method="post">
             <?php
         require("chessBusinessRules.php");
                 $playerNameBL = new ChessBusinessRules();
@@ -29,7 +29,7 @@
                 echo '<select name="id_white_player" id="white_player">';
 
                 foreach ($playerName as $names){
-                    echo "<option value=\"{$names->getNombre()}\">{$names->getNombre()}</option>";
+                    echo "<option value=\"{$names->getID()}\">{$names->getNombre()}</option>";
                     
                }
 
@@ -39,7 +39,7 @@
                 echo '<select name="id_black_player" id="black_player">';
 
                 foreach ($playerName as $names){
-                    echo "<option value=\"{$names->getNombre()}\">{$names->getNombre()}</option>";
+                    echo "<option value=\"{$names->getID()}\">{$names->getNombre()}</option>";
                     
                }
 
