@@ -29,7 +29,7 @@
                 echo '<select name="id_white_player" id="white_player">';
 
                 foreach ($playerName as $names){
-                    echo "<option value=\"{$names->getID()}\">{$names->getNombre()}</option>";
+                    echo "<option value=\"{$names->getID()}\">{$names->getName()}</option>";
                     
                }
 
@@ -39,7 +39,7 @@
                 echo '<select name="id_black_player" id="black_player">';
 
                 foreach ($playerName as $names){
-                    echo "<option value=\"{$names->getID()}\">{$names->getNombre()}</option>";
+                    echo "<option value=\"{$names->getID()}\">{$names->getName()}</option>";
                     
                }
 

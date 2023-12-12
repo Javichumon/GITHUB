@@ -109,6 +109,7 @@ img {
 
 }
 .thColor{
+    height: 10px;
     background-color: gray;
     color: black;
     border: solid black 1px;

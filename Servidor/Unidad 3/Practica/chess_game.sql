@@ -29,3 +29,11 @@ board varchar(200),
 primary key(ID,IDGame),
 FOREIGN KEY (IDGame) REFERENCES T_Matches(ID)
 );
+
+INSERT INTO T_Players (name,email,password) values
+ ("Javier","javier@gmail.com", "contraseña"),
+ ("Carlos","carlos@gmail.com", "contraseña"),
+ ("Elier","elier@gmail.com", "contraseña"),
+ ("Juan","juan@gmail.com", "contraseña");
+ 
+ 

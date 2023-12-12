@@ -6,7 +6,7 @@ require("chessDataAccess.php");
 
 class ChessBusinessRules
 {
-    private $_Nombre;
+    private $_Name;
     private $_ID;
     private $_Title;
     private $_White;
@@ -19,9 +19,9 @@ class ChessBusinessRules
     {
     }
 
-    function init($ID,$nombre)
+    function init($ID,$name)
     {
-        $this->_Nombre = $nombre;
+        $this->_Name = $name;
         $this->_ID = $ID;
     }
 
@@ -37,9 +37,9 @@ class ChessBusinessRules
         $this->_State = $state;
     }
 
-    function getNombre()
+    function getName()
     {
-        return $this->_Nombre;
+        return $this->_Name;
     }
     function getID()
     {
