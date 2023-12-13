@@ -41,7 +41,8 @@
     </thead>
     <tbody>
         <?php
-        foreach ($gamesList as $game) {
+        foreach ($gamesList as $game) 
+        {
             echo "<tr>";
             echo "<td class='listAlignWhite'>" . $game->getID() . "</td>";
             echo "<td class='listAlignBlack'>" . $game->getTitle() . "</td>";

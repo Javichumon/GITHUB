@@ -4,7 +4,8 @@ ini_set('html_errors', 0);
 
 require("new_gameView.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+{
     
     $businessRules = new ChessBusinessRules();
 
@@ -16,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $result = $businessRules->insertGame($id_white_player,$id_black_player,$title_game);
    
-} else {
+} else 
+{
     echo 'Acceso no permitido.';
 }
 ?>

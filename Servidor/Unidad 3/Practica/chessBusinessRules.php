@@ -15,6 +15,7 @@ class ChessBusinessRules
     private $_EndDate;
     private $_Winner;
     private $_State;
+    
 	function __construct()
     {
     }
@@ -105,8 +106,8 @@ class ChessBusinessRules
         
         return $nameList;
     }
-    public function insertGame($white, $black, $title) {
-        
+    public function insertGame($white, $black, $title) 
+    {
         $dataAcessObject = new ChessDataAccess();
         $insertData = $dataAcessObject->insertGameData($white, $black, $title);
     }

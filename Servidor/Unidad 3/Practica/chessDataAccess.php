@@ -47,5 +47,5 @@ class ChessDataAccess
         $query->execute();
         $result = $query->get_result();
         return $result;
-    }
+    }	
 }

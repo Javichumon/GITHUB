@@ -28,20 +28,22 @@
                 echo '<label for="white_player">Nombre Jugador Piezas Blancas</label>';
                 echo '<select name="id_white_player" id="white_player">';
 
-                foreach ($playerName as $names){
+                foreach ($playerName as $names)
+                {
                     echo "<option value=\"{$names->getID()}\">{$names->getName()}</option>";
                     
-               }
+                }
 
                 echo '</select><br><br>';
 
                 echo '<label for="black_player">Nombre Jugador Piezas Negras</label>';
                 echo '<select name="id_black_player" id="black_player">';
 
-                foreach ($playerName as $names){
+                foreach ($playerName as $names)
+                {
                     echo "<option value=\"{$names->getID()}\">{$names->getName()}</option>";
                     
-               }
+                }
 
                 echo '</select><br><br>';
         ?> 
@@ -55,10 +57,10 @@
         </form>
 
         <?php
-            if (isset($_POST['aceptar'])) {
-        
+            if (isset($_POST['aceptar'])) 
+            {
             header("Location: boardView.php");
-        }
+            }
         ?>
     </main>
 
