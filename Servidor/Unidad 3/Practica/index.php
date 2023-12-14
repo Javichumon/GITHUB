@@ -13,8 +13,10 @@
         <h1 id="welcome">¡Bienvenido a la mejor página de ajedrez!</h1>
     </header>
     <nav>
-        <li><a class="link" href="new_gameView.php">Nueva partida</a></li>
-        <li><a class="link" href="gameListView.php">Lista de partidas</a></li>
+        <ul>
+            <li><a class="link" href="new_gameView.php">Nueva partida</a></li>
+            <li><a class="link" href="gameListView.php">Lista de partidas</a></li>
+        </ul>
     </nav>
     <main>
 

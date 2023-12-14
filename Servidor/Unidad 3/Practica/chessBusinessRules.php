@@ -109,7 +109,15 @@ class ChessBusinessRules
     public function insertGame($white, $black, $title) 
     {
         $dataAcessObject = new ChessDataAccess();
-        $insertData = $dataAcessObject->insertGameData($white, $black, $title);
+
+        $gameID = $dataAcessObject->insertGameData($white, $black, $title);
+
+        return $gameID;
+    }
+    function obtainBoardStateByID($gameID)
+    {
+        $dataAccessObject = new ChessDataAccess();
+        return $dataAccessObject->obtainBoardStateByID($gameID);
     }
 }
 

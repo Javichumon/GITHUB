@@ -89,7 +89,7 @@ h2 {
     background-color: gray;
 }
 
-table {
+.chessTable {
     border-collapse: collapse;
     width: 750px;
     height: 750px;
@@ -102,31 +102,55 @@ td {
     text-align: center;
 }
 
-
 img {
     width: 80px;
     height: 80px;
 
 }
-.thColor{
-    height: 10px;
-    background-color: gray;
-    color: black;
-    border: solid black 1px;
+
+.tabla-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.listAlignWhite {
-    padding: 8px;
-    text-align: left;
-    background-color: #f2f2f2;
-    color: black;
-    text-align: center;
-    border: solid black 1px;
-}
-.listAlignBlack {
+
+.mi-tabla {
+    border-collapse: collapse;
+    width: 750px;
+    height: 750px;
+    margin: auto;
     
+}
+
+.mi-tabla th, .mi-tabla td {
     padding: 8px;
-    text-align: left;
-    background-color: #444;
     text-align: center;
-    border: solid black 1px;
+    width: 100px;
+   
+}
+
+.thColor {
+    background-color: gray; 
+}
+
+.listAlignWhite {
+    background-color: #ffffff; 
+    color: black;
+    border: 1px solid black;
+}
+
+.listAlignBlack {
+    background-color: #444; 
+    color: white;
+    border: 1px solid black;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: burlywood;
 }

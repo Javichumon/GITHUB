@@ -6,7 +6,6 @@
     <title>Board</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" type="image/png" href="img/icon.jpg">
-
 </head>
 
 <body>
@@ -14,11 +13,12 @@
         <h1 id="welcome">¡Que empiece el juego!</h1>
     </header>
     <nav>
-        <li><a class="link" href="new_gameView.php">Nueva partida</a></li>
-        <li><a class="link" href="gameListView.php">Lista de partidas</a></li>
+        <ul>
+            <li><a class="link" href="new_gameView.php">Nueva partida</a></li>
+            <li><a class="link" href="gameListView.php">Lista de partidas</a></li>
+        </ul>
     </nav>
     <main>
-        
         <p>
             <?php
             function DrawChessGame($board)
@@ -30,7 +30,7 @@
                     return;
                 }
 
-                echo '<table>';
+                echo '<table class="chessTable">';
                 $index = 0;
                 for ($row = 0; $row < 8; $row++) {
                     echo '<tr>';
@@ -53,11 +53,45 @@
                 echo '</table>';
             }
 
+            require("ChessBusinessRules.php");
 
+            $gameID = isset($_GET['id']) ? $_GET['id'] : null;
 
-            $board = "ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH";
-            DrawChessGame($board);
+            if ($gameID) {
+                $chessBusiness = new ChessBusinessRules();
+
+                $boardStates = $chessBusiness->obtainBoardStateByID($gameID);
+
+                $currentBoardIndex = isset($_GET['boardIndex']) ? $_GET['boardIndex'] : 0;
+
+                if (isset($_POST['first'])) {
+                    $currentBoardIndex = 0;
+                } elseif (isset($_POST['previous']) && $currentBoardIndex > 0) {
+                    $currentBoardIndex--;
+                } elseif (isset($_POST['next']) && $currentBoardIndex < count($boardStates) - 1) {
+                    $currentBoardIndex++;
+                } elseif (isset($_POST['last'])) {
+                    $currentBoardIndex = count($boardStates) - 1;
+                }
+
+                $currentBoard = $boardStates[$currentBoardIndex];
+
+                DrawChessGame($currentBoard);
+
+                echo '<div>';
+                echo '<form action="boardView.php?id=' . $gameID . '&boardIndex=' . $currentBoardIndex . '" method="post">';
+                echo '<input type="hidden" name="gameID" value="' . $gameID . '">';
+                echo '<input type="submit" name="first" value="Primera">';
+                echo '<input type="submit" name="previous" value="Anterior">';
+                echo '<input type="submit" name="next" value="Siguiente">';
+                echo '<input type="submit" name="last" value="Última">';
+                echo '</form>';
+                echo '</div>';
+            } else {
+                DrawChessGame("ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH");
+            }
             ?>
+        </p>
     </main>
 
     <footer>
@@ -66,3 +100,4 @@
 </body>
 
 </html>
+
