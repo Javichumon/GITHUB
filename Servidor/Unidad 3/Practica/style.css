@@ -108,21 +108,19 @@ img {
 
 }
 
-.tabla-container {
+.tablaContainer {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.mi-tabla {
+.miTabla {
     border-collapse: collapse;
-    width: 750px;
-    height: 750px;
     margin: auto;
     
 }
 
-.mi-tabla th, .mi-tabla td {
+.miTabla th, .miTabla td {
     padding: 8px;
     text-align: center;
     width: 100px;

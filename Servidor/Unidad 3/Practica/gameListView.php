@@ -19,10 +19,11 @@
         </ul>
     </nav>
     <main>
-        <div class="tabla-container">
+        <div class="tablaContainer">
         <table class="miTabla">
             <?php
-            require("ChessBusinessRules.php");
+            
+            require("chessBusinessRules.php");
 
             $chessBusiness = new ChessBusinessRules();
             $gamesList = $chessBusiness->obtainGames();
@@ -59,7 +60,6 @@
         </table>
         </div>
     </main>
-
     <footer>
         <p>© Página protegida con derechos de copyright ©</p>
     </footer>

@@ -21,6 +21,8 @@
     <main>
         <p>
             <?php
+            error_reporting(E_ALL);
+            ini_set('display_errors', '1');
             function DrawChessGame($board)
             {
                 $pieces = explode(",", $board);
@@ -53,7 +55,7 @@
                 echo '</table>';
             }
 
-            require("ChessBusinessRules.php");
+            require("chessBusinessRules.php");
 
             $gameID = isset($_GET['id']) ? $_GET['id'] : null;
 

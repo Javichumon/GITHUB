@@ -54,7 +54,7 @@ class ChessDataAccess
             echo "Error al conectar a MySQL: " . mysqli_connect_error();
         }
         mysqli_select_db($conexion, 'chess_game');
-        $query = mysqli_prepare($conexion, "SELECT T_Matches.ID, T_Matches.title, T_Matches.white, T_Matches.black, T_Matches.startDate, T_Matches.endDate, T_Matches.winner, T_Matches.state FROM T_Matches left JOIN T_Board_Status ON T_Matches.ID = T_Board_Status.IDGame group by t_matches.ID");
+        $query = mysqli_prepare($conexion, "SELECT T_Matches.ID, T_Matches.title, T_Matches.white, T_Matches.black, T_Matches.startDate, T_Matches.endDate, T_Matches.winner, T_Matches.state FROM T_Matches left JOIN T_Board_Status ON T_Matches.ID = T_Board_Status.IDGame group by T_Matches.ID");
 
         $query->execute();
         $result = $query->get_result();
