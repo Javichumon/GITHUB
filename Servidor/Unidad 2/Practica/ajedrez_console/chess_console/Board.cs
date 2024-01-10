@@ -120,17 +120,21 @@ namespace ChessAPI
                     if (piece != null)
                     {
                         string pieceCode = piece.GetCode();
-                        
                         pieceCode = pieceCode.Replace("|", "");
                         pieces.Add(pieceCode);
                     }
+                    else
+                    {
+                        pieces.Add("");
+                    }
                 }
             }
-            string result = string.Join(",", pieces); ;
+
+            string result = string.Join(",", pieces);
 
             return result;
-
         }
+
 
 
     }
