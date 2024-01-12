@@ -68,7 +68,7 @@ footer {
 
 }
 
-label {
+/* label {
     color: black;
     font-weight: bold;
     width: 130px;
@@ -77,7 +77,7 @@ label {
 
 label:after {
     content: ": "
-}
+} */
 
 h2 {
     color: black;
@@ -152,4 +152,14 @@ a{
 
 a:hover {
     color: burlywood;
+}
+#username{
+    float: right;
+}
+#tief{
+    color: #4CAF50;
+    font-size: 200px;
+}
+#takePremium{
+    color: #4CAF50;
 }

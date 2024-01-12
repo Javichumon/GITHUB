@@ -9,6 +9,8 @@ class UserDataAccess
 
 	function insertar($usuario,$perfil,$clave)
 	{
+        if (strlen($clave) >= 8) {
+            
 		$conexion = mysqli_connect('localhost','root','12345');
 		if (mysqli_connect_errno())
 		{
@@ -22,6 +24,11 @@ class UserDataAccess
         $res = $consulta->execute();
         
 		return $res;
+    }
+    else
+    {
+        echo "La contraseña tiene que tener minimo 8 caracteres";
+    }
 	}
 
     function verificar($usuario,$clave)
@@ -59,6 +66,7 @@ class UserDataAccess
         {
             return 'NOT_FOUND';
         }
+    
     }
 }
 

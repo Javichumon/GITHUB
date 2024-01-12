@@ -1,3 +1,12 @@
+<?php
+    
+        session_start(); // reanudamos la sesión
+        if (!isset($_SESSION['name']))
+        {
+            header("Location: login/Vistas/login.php");
+        }
+        $perfilUsuario = $_SESSION['perfil'];
+    ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,6 +14,7 @@
     <meta charset="UTF-8">
     <title>New Game</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styleForm.css">
     <link rel="icon" type="image/png" href="img/icon.jpg">
 </head>
 
@@ -14,21 +24,45 @@
     </header>
     <nav>
         <ul>
+            <li><a class="link" href="../../index.php">Inicio</a></li>
             <li><a class="link" href="new_gameView.php">Nueva partida</a></li>
-            <li><a class="link" href="gameListView.php">Lista de partidas</a></li>
+            <?php
+            if ($perfilUsuario == 'premium') {
+                echo '<li><a class="link" href="gameListView.php">Lista de partidas</a></li>';
+            }
+            ?>
+            <?php
+            if(!isset($_SESSION['name']))
+            {
+                echo "<li><a class='link' href='/login/Vistas/login.php'><img src='img/login.png' alt='Login'></a></li>";
+            }else
+            {
+                echo "<li><a href='login/Vistas/logout.php'> Cerrar sesión </a></li>";
+            }
+            
+            ?>
+            <?php
+            if (isset($_SESSION['name'])) {
+
+                $user = $_SESSION['name'];
+
+                echo "<li id='username'> Bienvenido " . $user .  "</li>"; 
+            }
+
+            ?>
         </ul>
     </nav>
     <main>
         
         <h2>Crear Nueva Partida</h2>
-        <form action="startGame.php" method="post">
+        <form class="formNewGame" action="startGame.php" method="post">
             <?php
         require("chessBusinessRules.php");
                 $playerNameBL = new ChessBusinessRules();
                 $playerName = $playerNameBL->obtain();
                 
-                echo '<label for="white_player">Nombre Jugador Piezas Blancas</label>';
-                echo '<select name="id_white_player" id="white_player">';
+                echo '<label class="labelNewGame" for="white_player">Nombre Jugador Piezas Blancas</label>';
+                echo '<select class="selectNewGame" name="id_white_player" id="white_player">';
 
                 foreach ($playerName as $names)
                 {
@@ -38,8 +72,8 @@
 
                 echo '</select><br><br>';
 
-                echo '<label for="black_player">Nombre Jugador Piezas Negras</label>';
-                echo '<select name="id_black_player" id="black_player">';
+                echo '<label class="labelNewGame" for="black_player">Nombre Jugador Piezas Negras</label>';
+                echo '<select class="selectNewGame" name="id_black_player" id="black_player">';
 
                 foreach ($playerName as $names)
                 {
@@ -50,12 +84,12 @@
                 echo '</select><br><br>';
         ?> 
 
-            <label for="title_game">Título de la Partida</label>
-            <input type="text" name="title_game" id="title_game" required>
+            <label class="labelNewGame" for="title_game">Título de la Partida</label>
+            <input class="inputNewGame" type="text" name="title_game" id="title_game" required>
 
             <br><br>
 
-            <input type="submit" name="aceptar" value="Aceptar">
+            <input class="btnNewGame" type="submit" name="aceptar" value="Aceptar">
         </form>
 
         <?php

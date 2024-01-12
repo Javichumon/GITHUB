@@ -13,7 +13,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     {
         session_start(); //inicia o reinicia una sesión
         $_SESSION['name'] = $_POST['name'];
-        header("Location: chessView.php");
+        $_SESSION['perfil'] = $perfil;
+        header("Location: ../../index.php");
     }
     else
     {
@@ -22,20 +23,34 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
-    <title>Login</title>
-    <meta charset = "UTF-8">
+    <meta charset="UTF-8">
+    <title>!Ajedrez!</title>
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+    <link rel="stylesheet" type="text/css" href="../../styleForm.css">
+    <link rel="icon" type="image/png" href="../../img/icon.jpg">
 </head>
+
 <body>
+    <header>
+        <h1 id="welcome">¡Bienvenido a la mejor página de ajedrez!</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a class="link" href="../../index.php">Inicio</a></li>
+            <li><a class="link" href="../../new_gameView.php">Nueva partida</a></li>
+        </ul>
+    </nav>
+    <main>
 
-
-    <form method = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <label for = "name"> Usuario: </label>
-        <input id="name" name = "name" type = "text">
-        <label for = "name"> Contraseña: </label>
-        <input id = "password" name = "password" type = "password">
-        <input type = "submit">
+    <form class="formLogin" method = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <label class="labelLogin" for = "name"> Usuario :</label>
+        <input  class="inputLogin" id="name" name = "name" type = "text">
+        <label class="labelLogin" for = "name"> Contraseña :</label>
+        <input class="inputLogin" id = "password" name = "password" type = "password">
+        <input class="buttonLogin" type = "submit" value="Login">
     </form>
 
     <?php
@@ -43,8 +58,13 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     ini_set('html_errors', 0);
         if (isset($error))
         {
-            print("<div> No tienes acceso </div>");
+            print("<div id='divNoAccess'> <p id='noAccess'> No tienes acceso </p></div>");
         }
     ?>
+    </main>
+
+<footer>
+    <p>© Página protegida con derechos de copyright ©</p>
+</footer>
 </body>
 </html>

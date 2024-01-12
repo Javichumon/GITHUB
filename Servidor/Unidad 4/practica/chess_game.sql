@@ -31,11 +31,13 @@ primary key(ID,IDGame),
 FOREIGN KEY (IDGame) REFERENCES T_Matches(ID)
 );
 
-INSERT INTO T_Players (name,email,password) values
+/* 
+ INSERT INTO T_Players (name,email,password) values
  ("Javier","javier@gmail.com", "contraseña"),
  ("Carlos","carlos@gmail.com", "contraseña"),
  ("Elier","elier@gmail.com", "contraseña"),
  ("Juan","juan@gmail.com", "contraseña");
+ */
  
  INSERT INTO T_Matches (title,white,black,endDate,winner,state) values 
  ("Gambito De Dama",1,2,now(),"Blancas","Terminado");
