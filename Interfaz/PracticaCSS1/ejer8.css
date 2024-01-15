@@ -1,0 +1,9 @@
+img {
+    max-width: 300px;
+    border: 2px solid black;
+    transition: opacity 0.3s ease;
+}
+
+img:hover {
+    opacity: 0.7;
+}
