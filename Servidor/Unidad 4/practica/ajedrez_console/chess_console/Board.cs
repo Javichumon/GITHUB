@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Threading.Tasks.Dataflow;
 using ChessAPI.Model;
@@ -43,15 +45,49 @@ namespace ChessAPI
         }
         public Board(string boardStatus)
         {
-            
+            string[] pieces = boardStatus.Split(',');
+
+             board = new Piece[8, 8];
+
+             int index = 0;
+
+             for (int row = 0; row < 8; row++)
+             {
+                   for (int col = 0; col < 8; col++)
+                    {
+                        string pieceCode = pieces[index++];
+                        char pieceType = pieceCode[0];
+                        char pieceColor = pieceCode[2];
+
+                        switch (pieceType)
+                     {
+                         case 'P':
+                             board[row, col] = new Pawn((Piece.ColorEnum)Enum.Parse(typeof(Piece.ColorEnum), pieceColor.ToString()));
+                            break;
+                        case 'H':
+                            board[row, col] = new Knight((Piece.ColorEnum)Enum.Parse(typeof(Piece.ColorEnum), pieceColor.ToString()));
+                            break;
+                        case 'A':
+                            board[row, col] = new Bishop((Piece.ColorEnum)Enum.Parse(typeof(Piece.ColorEnum), pieceColor.ToString()));
+                            break;
+                        case 'T':
+                            board[row, col] = new Rook((Piece.ColorEnum)Enum.Parse(typeof(Piece.ColorEnum), pieceColor.ToString()));
+                            break;
+                        case 'Q':
+                            board[row, col] = new Queen((Piece.ColorEnum)Enum.Parse(typeof(Piece.ColorEnum), pieceColor.ToString()));
+                            break;
+                        case 'K':
+                            board[row, col] = new King((Piece.ColorEnum)Enum.Parse(typeof(Piece.ColorEnum), pieceColor.ToString()));
+                            break;
+                    }
+                }
+            }
         }
         
         public Piece GetPiece(int row, int column)
         {
             return board[row, column];
         }
-
-
 
         public void Move(Movement movement)
         {
@@ -111,8 +147,6 @@ namespace ChessAPI
         //ha de tener el formato esperado por la parte Web para poder procesarse
         //y pintarse.
 
-
-
         public string GetBoardState()
         {
             List<string> pieces = new List<string>();
@@ -134,13 +168,18 @@ namespace ChessAPI
                     }
                 }
             }
-
             string result = string.Join(",", pieces);
 
             return result;
         }
 
+        public ChessAnalyzer AnalyzeChessBoard()
+        {
+            string boardStatus = GetBoardState();
 
+            ChessAnalyzer analyzer = new ChessAnalyzer(boardStatus);
 
+            return analyzer;
+        }
     }
 }

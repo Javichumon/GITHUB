@@ -33,5 +33,21 @@ namespace ChessAPI
             return board.GetBoardState();
         }
 
+        public ChessAnalyzer AnalyzeChessBoard()
+        {
+        // Obtener el estado actual del tablero como una cadena (deberías adaptar esto según tu implementación)
+        string boardStatus = GetBoardAsStringToChessWeb(); // Asumiendo que tienes un método similar en ChessGame
+
+    // Crear una instancia de ChessAnalyzer y analizar el tablero
+        ChessAnalyzer analyzer = new ChessAnalyzer(boardStatus);
+
+    // Imprimir los resultados (puedes adaptar esto según tus necesidades)
+        Console.WriteLine($"Valor material para las piezas blancas: {analyzer.ValorMaterialPiezasBlancas}");
+        Console.WriteLine($"Valor material para las piezas negras: {analyzer.ValorMaterialPiezasNegras}");
+        Console.WriteLine($"Mensaje: {analyzer.MensajeDistancia}");
+
+    // Devolver la instancia de ChessAnalyzer
+        return analyzer;
+        }
     }
 }
