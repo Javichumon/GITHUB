@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Threading.Tasks.Dataflow;
 using ChessAPI.Model;
 
 namespace ChessAPI
@@ -10,80 +6,157 @@ namespace ChessAPI
     {
         public Piece[,] board;
 
-        public Board()
-        {
-            board = new Piece[8, 8];
-            //TODO Practica 02_7
-            // Este constructor colocará las piezas en el tablero
-            board[0, 0] = new Rook(Piece.ColorEnum.BLACK);
-            board[0, 1] = new Knight(Piece.ColorEnum.BLACK);
-            board[0, 2] = new Bishop(Piece.ColorEnum.BLACK);
-            board[0, 3] = new Queen(Piece.ColorEnum.BLACK);
-            board[0, 4] = new King(Piece.ColorEnum.BLACK);
-            board[0, 5] = new Bishop(Piece.ColorEnum.BLACK);
-            board[0, 6] = new Knight(Piece.ColorEnum.BLACK);
-            board[0, 7] = new Rook(Piece.ColorEnum.BLACK);
+        // public Board()
+        // {
+        //     board = new Piece[8, 8];
+        //     //TODO Practica 02_7
+        //     // Este constructor colocará las piezas en el tablero
+        //     board[0, 0] = new Rook(Piece.ColorEnum.BLACK);
+        //     board[0, 1] = new Knight(Piece.ColorEnum.BLACK);
+        //     board[0, 2] = new Bishop(Piece.ColorEnum.BLACK);
+        //     board[0, 3] = new Queen(Piece.ColorEnum.BLACK);
+        //     board[0, 4] = new King(Piece.ColorEnum.BLACK);
+        //     board[0, 5] = new Bishop(Piece.ColorEnum.BLACK);
+        //     board[0, 6] = new Knight(Piece.ColorEnum.BLACK);
+        //     board[0, 7] = new Rook(Piece.ColorEnum.BLACK);
 
-            for (int i = 0; i < 8; i++)
-            {
-                board[1, i] = new Pawn(Piece.ColorEnum.BLACK);
-            }
+        //     for (int i = 0; i < 8; i++)
+        //     {
+        //         board[1, i] = new Pawn(Piece.ColorEnum.BLACK);
+        //     }
 
-            for (int i = 0; i < 8; i++)
-            {
-                board[6, i] = new Pawn(Piece.ColorEnum.WHITE);
-            }
-            board[7, 0] = new Rook(Piece.ColorEnum.WHITE);
-            board[7, 1] = new Knight(Piece.ColorEnum.WHITE);
-            board[7, 2] = new Bishop(Piece.ColorEnum.WHITE);
-            board[7, 3] = new Queen(Piece.ColorEnum.WHITE);
-            board[7, 4] = new King(Piece.ColorEnum.WHITE);
-            board[7, 5] = new Bishop(Piece.ColorEnum.WHITE);
-            board[7, 6] = new Knight(Piece.ColorEnum.WHITE);
-            board[7, 7] = new Rook(Piece.ColorEnum.WHITE);
+        //     for (int i = 0; i < 8; i++)
+        //     {
+        //         board[6, i] = new Pawn(Piece.ColorEnum.WHITE);
+        //     }
+        //     board[7, 0] = new Rook(Piece.ColorEnum.WHITE);
+        //     board[7, 1] = new Knight(Piece.ColorEnum.WHITE);
+        //     board[7, 2] = new Bishop(Piece.ColorEnum.WHITE);
+        //     board[7, 3] = new Queen(Piece.ColorEnum.WHITE);
+        //     board[7, 4] = new King(Piece.ColorEnum.WHITE);
+        //     board[7, 5] = new Bishop(Piece.ColorEnum.WHITE);
+        //     board[7, 6] = new Knight(Piece.ColorEnum.WHITE);
+        //     board[7, 7] = new Rook(Piece.ColorEnum.WHITE);
 
-        }
+        // }
+
+
         public Board(string boardStatus)
         {
             string[] pieces = boardStatus.Split(',');
 
-             board = new Piece[8, 8];
+            board = new Piece[8, 8];
 
-             int index = 0;
+            int index = 0;
 
-             for (int row = 0; row < 8; row++)
-             {
-                   for (int col = 0; col < 8; col++)
+            for (int row = 0; row < 8; row++)
+            {
+                for (int col = 0; col < 8; col++)
+                {
+                    if (index < pieces.Length)
                     {
                         string pieceCode = pieces[index++];
-                        char pieceType = pieceCode[0];
-                        char pieceColor = pieceCode[2];
 
-                        switch (pieceType)
-                     {
-                         case 'P':
-                             board[row, col] = new Pawn((Piece.ColorEnum)Enum.Parse(typeof(Piece.ColorEnum), pieceColor.ToString()));
-                            break;
-                        case 'H':
-                            board[row, col] = new Knight((Piece.ColorEnum)Enum.Parse(typeof(Piece.ColorEnum), pieceColor.ToString()));
-                            break;
-                        case 'A':
-                            board[row, col] = new Bishop((Piece.ColorEnum)Enum.Parse(typeof(Piece.ColorEnum), pieceColor.ToString()));
-                            break;
-                        case 'T':
-                            board[row, col] = new Rook((Piece.ColorEnum)Enum.Parse(typeof(Piece.ColorEnum), pieceColor.ToString()));
-                            break;
-                        case 'Q':
-                            board[row, col] = new Queen((Piece.ColorEnum)Enum.Parse(typeof(Piece.ColorEnum), pieceColor.ToString()));
-                            break;
-                        case 'K':
-                            board[row, col] = new King((Piece.ColorEnum)Enum.Parse(typeof(Piece.ColorEnum), pieceColor.ToString()));
-                            break;
+                        if (pieceCode == "")
+                        {
+                            board[row, col] = null;
+                        }
+                        else if (pieceCode.Length >= 4)
+                        {
+                            string pieceType = pieceCode.Substring(0, 2);
+                            string pieceColor = pieceCode.Substring(2, 2);
+
+                            Piece piece = CreatePiece(pieceType, pieceColor);
+
+                            board[row, col] = piece;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Error: Código de pieza no válido: '{pieceCode}'.");
+                        }
                     }
                 }
             }
         }
-        
+
+        private Piece CreatePiece(string pieceType, string pieceColor)
+        {
+            if (string.IsNullOrWhiteSpace(pieceType))
+            {
+                return null;
+            }
+
+            if (pieceColor.ToUpper() == "WH" || pieceColor.ToUpper() == "BL")
+            {
+                Piece.ColorEnum colorEnum = (pieceColor.ToUpper() == "WH") ? Piece.ColorEnum.WHITE : Piece.ColorEnum.BLACK;
+
+                switch (pieceType.ToUpper())
+                {
+                    case "PA":
+                        return new Pawn(colorEnum);
+                    case "KN":
+                        return new Knight(colorEnum);
+                    case "BI":
+                        return new Bishop(colorEnum);
+                    case "RO":
+                        return new Rook(colorEnum);
+                    case "QU":
+                        return new Queen(colorEnum);
+                    case "KI":
+                        return new King(colorEnum);
+
+                    default:
+                        Console.WriteLine($"Error: Tipo de pieza no reconocido: '{pieceType}'.");
+                        return null;
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Error: No se pudo convertir el color '{pieceColor}' a Piece.ColorEnum.");
+                return null;
+            }
+        }
+        public ChessAnalyzer CalculeChessValue()
+        {
+            int ValorMaterialPiezasBlancas = 0;
+            int ValorMaterialPiezasNegras = 0;
+            int Distancia = 0;
+
+            for (int row = 0; row < 8; row++)
+            {
+                for (int col = 0; col < 8; col++)
+                {
+                    Piece piece = board[row, col];
+
+                    if (piece != null)
+                    {
+                        if (piece._color == Piece.ColorEnum.WHITE)
+                        {
+                            ValorMaterialPiezasBlancas += piece.GetScore();
+                        }
+                        else if (piece._color == Piece.ColorEnum.BLACK)
+                        {
+                            ValorMaterialPiezasNegras += piece.GetScore();
+                        }
+                    }
+                }
+            }
+            String MensajeDiferencia = $"Valor material para las piezas blancas: {ValorMaterialPiezasBlancas}\n" + $"Valor material para las piezas negras: {ValorMaterialPiezasNegras}\n" + $"Van Empatados";
+            
+            if (ValorMaterialPiezasBlancas > ValorMaterialPiezasNegras)
+            {
+                Distancia = ValorMaterialPiezasBlancas - ValorMaterialPiezasNegras;
+                MensajeDiferencia = $"Valor material para las piezas blancas: {ValorMaterialPiezasBlancas}\n" + $"Valor material para las piezas negras: {ValorMaterialPiezasNegras}\n" + $"Van ganando las piezas blancas por: {Distancia}";
+            }
+            else if (ValorMaterialPiezasNegras > ValorMaterialPiezasBlancas)
+            {
+                Distancia = ValorMaterialPiezasNegras - ValorMaterialPiezasBlancas;
+                MensajeDiferencia = $"Valor material para las piezas blancas: {ValorMaterialPiezasBlancas}\n" + $"Valor material para las piezas negras: {ValorMaterialPiezasNegras}\n" + $"Van ganando las piezas negras por: {Distancia}";
+            }
+
+            ChessAnalyzer MensajeValor = new ChessAnalyzer(ValorMaterialPiezasBlancas, ValorMaterialPiezasNegras, MensajeDiferencia);
+            return MensajeValor;
+        }
         public Piece GetPiece(int row, int column)
         {
             return board[row, column];
@@ -171,15 +244,6 @@ namespace ChessAPI
             string result = string.Join(",", pieces);
 
             return result;
-        }
-
-        public ChessAnalyzer AnalyzeChessBoard()
-        {
-            string boardStatus = GetBoardState();
-
-            ChessAnalyzer analyzer = new ChessAnalyzer(boardStatus);
-
-            return analyzer;
         }
     }
 }

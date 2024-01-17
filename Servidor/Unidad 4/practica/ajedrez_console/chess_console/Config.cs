@@ -11,5 +11,7 @@ namespace ChessAPI
         public const int RookPieceValue = 5;
 
         public const int QueenValue = 9;
+
+        public const int KingValue = 0;
     }
 }

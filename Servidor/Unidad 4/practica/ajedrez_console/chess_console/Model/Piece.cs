@@ -10,6 +10,7 @@ namespace ChessAPI.Model
             string color = this._color.ToString().Substring(0,2).ToUpper();
             return $"|{code}{color}|";
         }
+        
 
         public abstract int GetScore();
 
