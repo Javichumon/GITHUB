@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Formulario de inscripción</title>
+</head>
+<body>
+  
+    <form action="" method="post" id="formulario">
+        <label for="nombre" class="basico">Nombre: </label>
+        <input type="text" name="nombre" size="30" required class="basico"><br><br>
+ 
+        <label for="apellido1" class="basico">Primer apellido: </label>
+        <input type="text" name="apellido1" size="30" required class="basico"><br><br>
+ 
+        <label for="dni" class="basico">DNI: </label>
+        <input type="text" name="dn1" pattern="[0-9]{8}[A-Za-z]{1}" title="DNI" class="basico"><br><br>
+ 
+        <label for="fechanacimiento" class="basico">Fecha de nacimiento: </label>
+        <input type="date" name="fechanacimiento" min="2005-01-01" class="basico"><br><br>
+ 
+        <label for="email" class="contacto">Email: </label><br>
+        <input type="text" name="email" class="contacto"><br><br>
+ 
+        <label for="password" class="contacto">Contraseña: </label><br>
+        <input type="password" name="password" id="password" minlength="8" maxlength="15" class="contacto"><br><br>
+ 
+        <label for="confirmpassword" class="contacto">Confirma tu contraseña: </label><br>
+        <input type="password" name="confirmpassword" id="confirmpassword" minlength="8" maxlength="15" class="contacto"><br><br>
+ 
+        <label for="turnofav" class="academico">Turno favorito: </label><br>
+        <input type="radio" id="mañana" name="turnofav" value="mañana" class="academico">
+        <label for="mañana" class="academico">Mañana</label><br>
+        <input type="radio" id="tarde" name="turnofav" value="tarde" class="academico">
+        <label for="tarde" class="academico">Tarde</label><br><br>
+ 
+        <label for="beca" class="academico">¿Pides beca?</label><br>
+        <input type="radio" name="beca" id="si" value="si" class="academico">
+        <label for="si" class="academico">Si</label><br>
+        <input type="radio" name="beca" id="no" value="no" checked class="academico">
+        <label for="no" class="academico">No</label><br><br>
+ 
+        <p class="academico">Asignaturas a matricularse: </p>
+        <input type="checkbox" id="modulo1" name="modulo1" value="sistemasinformaticos" class="academico">
+        <label for="modulo1" class="academico">Sistemas Informáticos</label><br>
+        <input type="checkbox" id="modulo2" name="modulo2" value="basesdedatos" checked class="academico">
+        <label for="modulo2" class="academico">Bases de Datos</label><br>
+        <input type="checkbox" id="modulo3" name="modulo3" value="programacion" checked class="academico">
+        <label for="modulo3" class="academico">Programación</label><br>
+        <input type="checkbox" id="modulo4" name="modulo4" value="lenguajesdemarcas" checked class="academico">
+        <label for="modulo4" class="academico">Sistemas Informáticos</label><br>
+        <input type="checkbox" id="modulo5" name="modulo5" value="entornosdedesarrollo" class="academico">
+        <label for="modulo5" class="academico">Entornos de desarrollo</label><br>
+        <input type="checkbox" id="modulo6" name="modulo6" value="fol" class="academico">
+        <label for="modulo6" class="academico">Formación y Orientación Laboral</label><br><br>
+ 
+        <label for="fichero" class="otros">Añade un fichero: </label>
+        <input type="file" name="fichero" class="otros"><br><br>
+ 
+        <label for="comentario" class="otros">Comentarios adicionales: </label><br>
+        <textarea id="comentario" name="comentario" rows="5" cols="60" class="otros"></textarea><br><br>
+ 
+        <input type="submit" value="Submit">
+        <input type="reset">
+   </form>
+   <button onclick="mostrarCategoria('basico')">Basico</button>
+   <button onclick="mostrarCategoria('contacto')">Contacto</button>
+   <button onclick="mostrarCategoria('academico')">Academico</button>
+   <button onclick="mostrarCategoria('otros')">Otros</button>
+   <button onclick="mostrarTodo()">Todo</button>
+
+   <script src="form.js"></script>
+</body>
+</html>
