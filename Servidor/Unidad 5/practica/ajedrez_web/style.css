@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url(img/fondoAjedrez.jpeg);
+    color: #FFFFFF;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+nav {
+    background-color: #444;
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 60px;
+}
+
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.link:hover {
+    color: burlywood;
+}
+
+
+main {
+    margin-top: 80px;
+    padding: 20px;
+    text-align: center;
+
+}
+
+footer {
+    background-color: #444;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    text-align: center;
+
+}
+
+/* label {
+    color: black;
+    font-weight: bold;
+    width: 130px;
+    padding: 20px;
+}
+
+label:after {
+    content: ": "
+} */
+
+h2 {
+    color: black;
+}
+
+.white {
+    background-color: rgb(238, 231, 231);
+}
+
+.black {
+    background-color: gray;
+}
+
+.chessTable {
+    border-collapse: collapse;
+    width: 750px;
+    height: 750px;
+    margin: auto;
+}
+
+td {
+    width: 12.5%;
+    height: 12.5%;
+    text-align: center;
+}
+
+body img {
+    width: 80px;
+    height: 80px;
+}
+
+.tablaContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.miTabla {
+    border-collapse: collapse;
+    margin: auto;
+    
+}
+
+.miTabla th, .miTabla td {
+    padding: 8px;
+    text-align: center;
+    width: 100px;
+   
+}
+
+.thColor {
+    background-color: gray; 
+}
+
+.listAlignWhite {
+    background-color: #ffffff; 
+    color: black;
+    border: 1px solid black;
+}
+
+.listAlignBlack {
+    background-color: #444; 
+    color: white;
+    border: 1px solid black;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: burlywood;
+}
+#username{
+    float: right;
+}
+#tief{
+    color: #4CAF50;
+    font-size: 200px;
+}
+#takePremium{
+    color: #4CAF50;
+}

@@ -1,0 +1,100 @@
+form.formNewGame {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+form.formNewGame label.labelNewGame {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: black;
+}
+
+form.formNewGame select.selectNewGame,
+form.formNewGame input.inputNewGame {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    border-radius: 3px;
+}
+
+form.formNewGame input.btnNewGame {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 15px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+form.formNewGame input.btnNewGame:hover {
+    background-color: #45a049;
+}
+form.formLogin {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+form.formLogin label.labelLogin {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: black;
+}
+
+form.formLogin input.inputLogin {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    border-radius: 3px;
+}
+
+form.formLogin input.buttonLogin {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 15px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+form.formLogin input.buttonLogin:hover {
+    background-color: #45a049;
+}
+#noAccess{
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 14px;
+}
+#divNoAccess{
+    background-color: #45a049;
+    width: 200px;
+    margin: 0 auto;
+    padding: 5px;
+    text-align: center;
+}
