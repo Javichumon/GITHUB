@@ -8,7 +8,7 @@ namespace ChessAPI.Model
 
         public override int GetScore()
         {
-            return PieceValues.RookPieceValue;
+            return Config.RookPieceValue;
         }
     }
 }
