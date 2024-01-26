@@ -79,7 +79,7 @@ namespace ChessAPI.Model
                 return null;
             }
         }
-        public BoardScore CalculeChessValue()
+        public BoardScore GetScore()
         {
             int ValorMaterialPiezasBlancas = 0;
             int ValorMaterialPiezasNegras = 0;
@@ -104,21 +104,46 @@ namespace ChessAPI.Model
                     }
                 }
             }
-            String MensajeDiferencia = $"Valor material para las piezas blancas: {ValorMaterialPiezasBlancas}\n" + $"Valor material para las piezas negras: {ValorMaterialPiezasNegras}\n" + $"Van Empatados";
+            String MensajeDiferencia = $"Van Empatados";
             
             if (ValorMaterialPiezasBlancas > ValorMaterialPiezasNegras)
             {
                 Distancia = ValorMaterialPiezasBlancas - ValorMaterialPiezasNegras;
-                MensajeDiferencia = $"Valor material para las piezas blancas: {ValorMaterialPiezasBlancas}\n" + $"Valor material para las piezas negras: {ValorMaterialPiezasNegras}\n" + $"Van ganando las piezas blancas por: {Distancia}";
+                MensajeDiferencia = $"Van ganando las piezas blancas por: {Distancia}";
             }
             else if (ValorMaterialPiezasNegras > ValorMaterialPiezasBlancas)
             {
                 Distancia = ValorMaterialPiezasNegras - ValorMaterialPiezasBlancas;
-                MensajeDiferencia = $"Valor material para las piezas blancas: {ValorMaterialPiezasBlancas}\n" + $"Valor material para las piezas negras: {ValorMaterialPiezasNegras}\n" + $"Van ganando las piezas negras por: {Distancia}";
+                MensajeDiferencia = $"Van ganando las piezas negras por: {Distancia}";
             }
 
             BoardScore MensajeValor = new BoardScore(ValorMaterialPiezasBlancas, ValorMaterialPiezasNegras, MensajeDiferencia);
             return MensajeValor;
+        }
+        public string GetBoardState()
+        {
+            List<string> pieces = new List<string>();
+
+            for (int row = 0; row < 8; row++)
+            {
+                for (int col = 0; col < 8; col++)
+                {
+                    Piece piece = board[row, col];
+                    if (piece != null)
+                    {
+                        string pieceCode = piece.GetCode();
+                        pieceCode = pieceCode.Replace("|", "");
+                        pieces.Add(pieceCode);
+                    }
+                    else
+                    {
+                        pieces.Add("");
+                    }
+                }
+            }
+            string result = string.Join(",", pieces);
+
+            return result;
         }
         public Piece GetPiece(int row, int column)
         {

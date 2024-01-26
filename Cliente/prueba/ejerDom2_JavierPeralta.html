@@ -1,0 +1,79 @@
+<!-- Alterando elementos vía DOM -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicar Estilos con jQuery</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <style>
+        .class1 {
+            color: black;
+        }
+
+        .class2 {
+            color: black;
+        }
+        
+
+        .class3 {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Ejemplo de Aplicar Estilos con jQuery</h1>
+
+    <p class="class1">Párrafo con clase 1</p>
+    <h2 class="class1">Encabezado con clase 1</h2>
+
+    <p class="class2">Párrafo con clase 2</p>
+    <h2 class="class2">Encabezado con clase 2</h2>
+
+    <p class="class3">Párrafo con clase 3</p>
+    <h2 class="class3">Encabezado con clase 3</h2>
+
+    <label for="etiquetaSelect">Selecciona una etiqueta:</label>
+    <select id="etiquetaSelect">
+        <option value="p">Párrafo</option>
+        <option value="h2">Encabezado</option>
+    </select>
+
+    <br><br>
+
+    <label for="claseSelect">Selecciona una clase:</label>
+    <select id="claseSelect">
+        <option value="class1">Clase 1</option>
+        <option value="class2">Clase 2</option>
+        <option value="class3">Clase 3</option>
+    </select>
+
+    <br><br>
+
+    <label for="colorInput">Selecciona un color:</label>
+    <input type="color" id="colorInput" value="#000000">
+
+    <br><br>
+
+    <button id="aplicarBtn">Aplicar</button>
+
+    <script>
+        $(document).ready(function () {
+            $("#aplicarBtn").click(function () {
+                var etiquetaSeleccionada = $("#etiquetaSelect").val();
+                var claseSeleccionada = $("#claseSelect").val();
+                var colorSeleccionado = $("#colorInput").val();
+
+                var elementos = $(etiquetaSeleccionada + "." + claseSeleccionada);
+
+                elementos.css("color", colorSeleccionado);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

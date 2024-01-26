@@ -1,3 +1,4 @@
+using System.Text.Json;
 using ChessAPI.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +23,9 @@ public class ChessGameController : ControllerBase
             if (string.IsNullOrEmpty(board))
                 return BadRequest("board no puede ser IsNullOrEmpty");
 
-            var response = _boardService.GetScore(board);
+            BoardScore response = _boardService.GetScore(board);
+
+
             return Ok(response);
         }   
         catch (Exception ex)

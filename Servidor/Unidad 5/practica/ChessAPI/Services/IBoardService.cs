@@ -2,5 +2,6 @@ using ChessAPI.Model;
 
 public interface IBoardService
 {
-    BoardScore GetScore(string board); 
+    public BoardScore GetScore(string board); 
+    public Movement isValid();
 }

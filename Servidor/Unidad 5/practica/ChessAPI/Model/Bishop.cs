@@ -12,5 +12,10 @@ namespace ChessAPI.Model
         {
             return Config.BishopPieceValue;
         }
+
+        public override MovementType ValidateSpecificRulesForMovement(Movement movement, Piece[,] board)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
