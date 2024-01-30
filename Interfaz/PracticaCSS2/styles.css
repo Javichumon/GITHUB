@@ -1,0 +1,85 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #c9c1c1;
+    text-align: center;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .nav-links a:hover {
+    color: orange;
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .btn {
+    display: inline-block;
+    background-color: orange;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: #333;
+  }
+
+  .imagenesGato{
+    width: 200px;
+  }
+  .logoGato{
+    width: 75px;
+    padding: 10px;
+    margin: 10px;
+    float: left;
+  }
+  #logo{
+    width: 100px;
+    height: 100px;
+  }
+  
+  /* Estilos responsivos */
+  @media screen and (max-width: 600px) {
+    nav {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .nav-links {
+      margin-top: 20px;
+    }
+  }
+  
