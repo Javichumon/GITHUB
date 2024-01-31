@@ -6,25 +6,26 @@ namespace ChessAPI.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class ChessGameMovementController : ControllerBase
+public class MovementController : ControllerBase
 {
     private IBoardService _boardService;
 
-    public ChessGameMovementController(IBoardService boardService)
+    public MovementController(IBoardService boardService)
     {
         this._boardService = boardService;
     }
 
     [HttpGet]
-    public IActionResult Get(string board,int fromColumn, int toColumn, int fromRow, int toRow)
+    public IActionResult Get(string board)
     {
         try
         {
             if (string.IsNullOrEmpty(board))
-                return BadRequest("board no puede ser IsNullOrEmpty");
+            {
+            return BadRequest("board no puede ser IsNullOrEmpty");
+            }
 
-            Movement response = _boardService.isValid();
-
+            var response = _boardService.isValid();
 
             return Ok(response);
         }   

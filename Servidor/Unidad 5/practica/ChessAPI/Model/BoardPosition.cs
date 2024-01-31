@@ -5,6 +5,7 @@ namespace ChessAPI.Model
         private int _row;
         private int _column;
 
+        
         public int Row
         {
             get { return _row; }
@@ -49,5 +50,6 @@ namespace ChessAPI.Model
             else
                 throw new ArgumentOutOfRangeException(nameof(column),"The valid range is between 0 and 7.");
         }
+        
     }
 }

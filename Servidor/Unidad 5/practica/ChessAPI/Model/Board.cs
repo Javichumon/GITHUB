@@ -149,5 +149,15 @@ namespace ChessAPI.Model
         {
             return board[row, column];
         }
+        private void _Move(Movement movement)
+        {
+            int sourceRow = movement.fromRow;
+            int sourceColumn = movement.fromColumn;
+            int destinationRow = movement.toRow;
+            int destinationColumn = movement.toColumn;
+
+            board[destinationRow, destinationColumn] = board[sourceRow, sourceColumn];
+            board[sourceRow, sourceColumn] = null;
+        }
     }
 }
