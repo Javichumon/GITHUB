@@ -1,8 +1,7 @@
 body {
     font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
     background-color: #c9c1c1;
     text-align: center;
   }
@@ -57,18 +56,74 @@ body {
     background-color: #333;
   }
 
+  #servicios {
+    text-align: center;
+    padding: 40px 20px;
+  }
+  /* Uso del grid */
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .servicio {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .servicio h3 {
+    color: orange;
+  }
+
+  #galeria {
+    padding: 40px 20px;
+  }
+  
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
   .imagenesGato{
-    width: 200px;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   .logoGato{
     width: 75px;
     padding: 10px;
     margin: 10px;
-    float: left;
   }
   #logo{
     width: 100px;
     height: 100px;
+  }
+  main {
+    position: relative;
+    padding: 20px; 
+  }
+  
+  .fondoTransparente {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    opacity: 0.7; 
+    z-index: -1; 
+  }
+  
+  
+  footer{
+    background-color: #333;
+    color: orange;
+    width: 100%;
+    bottom: 0px;
+    text-align: center;
   }
   
   /* Estilos responsivos */
