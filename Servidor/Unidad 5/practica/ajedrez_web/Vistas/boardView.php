@@ -1,20 +1,19 @@
 <?php
-    
-        session_start(); // reanudamos la sesión
-        if (!isset($_SESSION['name']))
-        {
-            header("Location: login/Vistas/login.php");
-        }
-        $perfilUsuario = $_SESSION['perfil'];
-    ?>
+
+session_start(); // reanudamos la sesión
+if (!isset($_SESSION['name'])) {
+    header("Location: login.php");
+}
+$perfilUsuario = $_SESSION['perfil'];
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <title>Board</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="icon" type="image/png" href="img/icon.jpg">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="icon" type="image/png" href="../img/icon.jpg">
 </head>
 
 <body>
@@ -23,40 +22,63 @@
     </header>
     <nav>
         <ul>
-            <li><a class="link" href="../../index.php">Inicio</a></li>
+            <li><a class="link" href="index.php">Inicio</a></li>
             <li><a class="link" href="new_gameView.php">Nueva partida</a></li>
             <?php
-           
+
             if ($perfilUsuario == 'premium') {
                 echo '<li><a class="link" href="gameListView.php">Lista de partidas</a></li>';
             }
             ?>
             <?php
-            if(!isset($_SESSION['name']))
-            {
-                echo "<li><a class='link' href='/login/Vistas/login.php'>Abrir sesión </a></li>";
-            }else
-            {
-                echo "<li><a href='login/Vistas/logout.php'> Cerrar sesión </a></li>";
+            if (!isset($_SESSION['name'])) {
+                echo "<li><a class='link' href='login.php'>Abrir sesión </a></li>";
+            } else {
+                echo "<li><a href='logout.php'> Cerrar sesión </a></li>";
             }
-            
+
             ?>
             <?php
             if (isset($_SESSION['name'])) {
 
                 $user = $_SESSION['name'];
 
-                echo "<li id='username'> Bienvenido " . $user .  "</li>"; 
+                echo "<li id='username'> Bienvenido " . $user .  "</li>";
             }
 
             ?>
         </ul>
     </nav>
     <main>
+        <?php
+
+        $boardStatus = ",KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL,,PABL,PABL,PABL,PABL,PABL,PABL,PABL,,,,,,,,,,,,,,,,,ROBL,,,,,,,,,,,,,,,,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH";
+
+        function getScoreGame($boardStatus){
+        require("../Negocio/chessWebAPIDataBussinesRules.php");
+        $chessWebAPIBusiness = new ChessWebAPIDataBussinesRules();
+
+        $boardState = $chessWebAPIBusiness->getBoardState($boardStatus);
+        
+        $valorMaterialPiezasBlancas = $boardState['valorMaterialPiezasBlancas'];
+        $valorMaterialPiezasNegras = $boardState['valorMaterialPiezasNegras'];
+        $mensajeDistancia = $boardState['mensajeDistancia'];
+
+        echo '<div class="mensajeValor">';
+        echo '<p class="mensajeMaterial"> Valor material de las piezas blancas: ' . $valorMaterialPiezasBlancas . '</p>';
+        echo '<p class="mensajeMaterial"> Valor material de las piezas negras: ' . $valorMaterialPiezasNegras . '</p>';
+        echo '<p class="mensajeMaterial">' . $mensajeDistancia . '</p>';
+        echo '</div>';
+        }
+        ?>
+
+       
         <p>
+            
             <?php
             error_reporting(E_ALL);
             ini_set('display_errors', '1');
+
             function DrawChessGame($board)
             {
                 $pieces = explode(",", $board);
@@ -77,7 +99,7 @@
                         echo '<td class="' . $class . '">';
 
                         if (!empty($pieces[$index])) {
-                            $pieceImage = 'img/' . $pieces[$index] . '.png';
+                            $pieceImage = '../img/' . $pieces[$index] . '.png';
                             echo '<img src="' . $pieceImage . '" alt="' . $pieces[$index] . '">';
                         }
 
@@ -89,10 +111,10 @@
                 echo '</table>';
             }
 
-            require("chessBusinessRules.php");
+            require("../Negocio/chessBusinessRules.php");
+            
 
             $gameID = isset($_GET['id']) ? $_GET['id'] : null;
-
             if ($gameID) {
                 $chessBusiness = new ChessBusinessRules();
 
@@ -110,9 +132,11 @@
                     $currentBoardIndex = count($boardStates) - 1;
                 }
 
-                $currentBoard = $boardStates[$currentBoardIndex];
-
-                DrawChessGame($currentBoard);
+                $boardStatus = $boardStates[$currentBoardIndex];
+                getScoreGame($boardStatus);
+                echo ' <div class="chessTable">';
+                DrawChessGame($boardStatus);
+                echo '</div>';
 
                 echo '<div>';
                 echo '<form action="boardView.php?id=' . $gameID . '&boardIndex=' . $currentBoardIndex . '" method="post">';
@@ -124,10 +148,14 @@
                 echo '</form>';
                 echo '</div>';
             } else {
-                DrawChessGame("ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH");
+                getScoreGame($boardStatus);
+                echo ' <div class="chessTable">';
+                DrawChessGame($boardStatus);
+                echo '</div>';
             }
             ?>
         </p>
+        
     </main>
 
     <footer>
@@ -136,4 +164,3 @@
 </body>
 
 </html>
-

@@ -163,3 +163,15 @@ a:hover {
 #takePremium{
     color: #4CAF50;
 }
+.mensajeValor{
+    float: left;
+    display: block;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 200px;
+    background-color: #444;
+    color: white;
+    font-size: 18px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}

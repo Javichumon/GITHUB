@@ -8,15 +8,15 @@ namespace ChessAPI.Controllers;
 [Route("[controller]")]
 public class MovementController : ControllerBase
 {
-    private IBoardService _boardService;
+    private IBoardMovementService _boardMovementService;
 
-    public MovementController(IBoardService boardService)
+    public MovementController(IBoardMovementService boardMovementService)
     {
-        this._boardService = boardService;
+        this._boardMovementService = boardMovementService;
     }
 
     [HttpGet]
-    public IActionResult Get(string board)
+    public IActionResult Get(string board, int fromRow, int fromColumn, int toColumn, int toRow)
     {
         try
         {
@@ -25,7 +25,7 @@ public class MovementController : ControllerBase
             return BadRequest("board no puede ser IsNullOrEmpty");
             }
 
-            var response = _boardService.isValid();
+            var response = _boardMovementService.IsValid(board,fromRow, fromColumn, toColumn, toRow);
 
             return Ok(response);
         }   

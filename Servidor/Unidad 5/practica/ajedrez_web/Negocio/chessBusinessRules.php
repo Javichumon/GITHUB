@@ -2,7 +2,7 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require("chessDataAccess.php");
+require("../AccesoDatos/chessDataAccess.php");
 
 class ChessBusinessRules
 {

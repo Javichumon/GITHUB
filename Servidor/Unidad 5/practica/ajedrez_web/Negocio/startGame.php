@@ -2,7 +2,7 @@
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
 
-require("new_gameView.php");
+require("../Vistas/new_gameView.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {

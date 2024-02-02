@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
         session_start(); //inicia o reinicia una sesión
         $_SESSION['name'] = $_POST['name'];
         $_SESSION['perfil'] = $perfil;
-        header("Location: ../../index.php");
+        header("Location: index.php");
     }
     else
     {
@@ -28,9 +28,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
 <head>
     <meta charset="UTF-8">
     <title>!Ajedrez!</title>
-    <link rel="stylesheet" type="text/css" href="../../style.css">
-    <link rel="stylesheet" type="text/css" href="../../styleForm.css">
-    <link rel="icon" type="image/png" href="../../img/icon.jpg">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../styleForm.css">
+    <link rel="icon" type="image/png" href="../img/icon.jpg">
 </head>
 
 <body>
@@ -39,8 +39,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     </header>
     <nav>
         <ul>
-            <li><a class="link" href="../../index.php">Inicio</a></li>
-            <li><a class="link" href="../../new_gameView.php">Nueva partida</a></li>
+            <li><a class="link" href="index.php">Inicio</a></li>
+            <li><a class="link" href="new_gameView.php">Nueva partida</a></li>
         </ul>
     </nav>
     <main>

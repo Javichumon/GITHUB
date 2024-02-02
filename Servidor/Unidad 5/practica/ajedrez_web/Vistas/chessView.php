@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>!Ajedrez!</title>
-    <link rel="stylesheet" type="text/css" href="../../style.css">
-    <link rel="icon" type="image/png" href="../../img/icon.jpg">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="icon" type="image/png" href="../img/icon.jpg">
 </head>
 
 <body>
@@ -14,13 +14,13 @@
     </header>
     <nav>
         <ul>
-            <li><a class="link" href="../../index.php">Inicio</a></li>
-            <li><a class="link" href="../../new_gameView.php">Nueva partida</a></li>
-            <li><a class="link" href="../../gameListView.php">Lista de partidas</a></li>
+            <li><a class="link" href="index.php">Inicio</a></li>
+            <li><a class="link" href="new_gameView.php">Nueva partida</a></li>
+            <li><a class="link" href="gameListView.php">Lista de partidas</a></li>
             <?php
             if(isset($_SESSION['name']))
             {
-                echo "<li><a class='link' href='login.php'><img src='img/login.png' alt='Login'></a></li>";
+                echo "<li><a class='link' href='login.php'><img src='../img/login.png' alt='Login'></a></li>";
             }else
             {
                 echo "<li><a href='logout.php'> Cerrar sesión </a></li>";
@@ -51,7 +51,7 @@
         require("../Negocio/chessBusinessRules.php");
 
         $chessBL = new ChessBusinessRules();
-        $chessData = $chessBL->obtener();
+        $chessData = $chessBL->obtain();
         
         foreach ($chessData as $chess)
         {

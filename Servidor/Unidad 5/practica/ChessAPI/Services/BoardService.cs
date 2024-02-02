@@ -9,11 +9,5 @@ public class BoardService : IBoardService
 
         return score;
     }
-    public bool isValid()
-    {
-        Movement m  = new Movement();
-        var movements = m.IsValid();
 
-        return movements;
-    }
 }

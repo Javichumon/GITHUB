@@ -149,15 +149,21 @@ namespace ChessAPI.Model
         {
             return board[row, column];
         }
-        private void _Move(Movement movement)
+        public MovementAPI IsValid(int fromRow, int fromColumn, int toRow, int toColumn)
         {
-            int sourceRow = movement.fromRow;
-            int sourceColumn = movement.fromColumn;
-            int destinationRow = movement.toRow;
-            int destinationColumn = movement.toColumn;
-
-            board[destinationRow, destinationColumn] = board[sourceRow, sourceColumn];
-            board[sourceRow, sourceColumn] = null;
+            Movement movement = new Movement(fromColumn,fromRow,toRow,toColumn);
+            Piece piece = board[fromColumn, fromRow];
+            if(movement.IsValid())
+            {
+                if(piece.Validate(movement, board)!= Piece.MovementType.InvalidNormalMovement)
+                {
+                    board[movement.toRow, movement.toColumn] = board[movement.fromRow, movement.fromColumn];
+                    board[movement.fromRow, movement.fromColumn] = null;
+                    return new MovementAPI(true,"OK",GetBoardState());
+                }
+            }
+            return new MovementAPI(false,"Error",GetBoardState());
         }
+        
     }
 }

@@ -2,7 +2,7 @@
     
         session_start(); // reanudamos la sesión
         if (!isset($_SESSION['name'])) {
-            header("Location: login/Vistas/login.php");
+            header("Location: login.php");
         }
         $perfilUsuario = $_SESSION['perfil'];
     ?>
@@ -12,8 +12,8 @@
 <head>
     <meta charset="UTF-8">
     <title>!Ajedrez!</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="icon" type="image/png" href="img/icon.jpg">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="icon" type="image/png" href="../img/icon.jpg">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
     </header>
     <nav>
         <ul>
-            <li><a class="link" href="../../index.php">Inicio</a></li>
+            <li><a class="link" href="index.php">Inicio</a></li>
             <li><a class="link" href="new_gameView.php">Nueva partida</a></li>
             <?php
            
@@ -35,10 +35,10 @@
             <?php
             if(!isset($_SESSION['name']))
             {
-                echo "<li><a class='link' href='/login/Vistas/login.php'>Abrir sesión </a></li>";
+                echo "<li><a class='link' href='login.php'>Abrir sesión </a></li>";
             }else
             {
-                echo "<li><a href='login/Vistas/logout.php'> Cerrar sesión </a></li>";
+                echo "<li><a href='logout.php'> Cerrar sesión </a></li>";
             }
             
             ?>

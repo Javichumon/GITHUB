@@ -3,7 +3,7 @@
         session_start(); // reanudamos la sesión
         if (!isset($_SESSION['name']))
         {
-            header("Location: login/Vistas/login.php");
+            header("Location: login.php");
         }
         $perfilUsuario = $_SESSION['perfil'];
     ?>
@@ -13,9 +13,9 @@
 <head>
     <meta charset="UTF-8">
     <title>New Game</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="styleForm.css">
-    <link rel="icon" type="image/png" href="img/icon.jpg">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../styleForm.css">
+    <link rel="icon" type="image/png" href="../img/icon.jpg">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
     </header>
     <nav>
         <ul>
-            <li><a class="link" href="../../index.php">Inicio</a></li>
+            <li><a class="link" href="index.php">Inicio</a></li>
             <li><a class="link" href="new_gameView.php">Nueva partida</a></li>
             <?php
             if ($perfilUsuario == 'premium') {
@@ -34,10 +34,10 @@
             <?php
             if(!isset($_SESSION['name']))
             {
-                echo "<li><a class='link' href='/login/Vistas/login.php'><img src='img/login.png' alt='Login'></a></li>";
+                echo "<li><a class='link' href='login.php'><img src='img/login.png' alt='Login'></a></li>";
             }else
             {
-                echo "<li><a href='login/Vistas/logout.php'> Cerrar sesión </a></li>";
+                echo "<li><a href='logout.php'> Cerrar sesión </a></li>";
             }
             
             ?>
@@ -55,9 +55,9 @@
     <main>
         
         <h2>Crear Nueva Partida</h2>
-        <form class="formNewGame" action="startGame.php" method="post">
+        <form class="formNewGame" action="../Negocio/startGame.php" method="post">
             <?php
-        require("chessBusinessRules.php");
+        require("../Negocio/chessBusinessRules.php");
                 $playerNameBL = new ChessBusinessRules();
                 $playerName = $playerNameBL->obtain();
                 
@@ -95,7 +95,7 @@
         <?php
             if (isset($_POST['aceptar'])) 
             {
-            header("Location: boardView.php");
+            header("Location: ../Vistas/boardView.php");
             }
         ?>
     </main>

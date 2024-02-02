@@ -24,9 +24,9 @@
 </head>
 
 <body>
-
+    
     <h1>Ejemplo de Aplicar Estilos con jQuery</h1>
-
+    <div class="parrafosYCabeceras">
     <p class="class1">Párrafo con clase 1</p>
     <h2 class="class1">Encabezado con clase 1</h2>
 
@@ -35,17 +35,19 @@
 
     <p class="class3">Párrafo con clase 3</p>
     <h2 class="class3">Encabezado con clase 3</h2>
-
+</div>
     <label for="etiquetaSelect">Selecciona una etiqueta:</label>
     <select id="etiquetaSelect">
+        <option value="all">Todo</option>
         <option value="p">Párrafo</option>
         <option value="h2">Encabezado</option>
     </select>
-
+    
     <br><br>
 
     <label for="claseSelect">Selecciona una clase:</label>
     <select id="claseSelect">
+        <option value="allClass">Todo</option>
         <option value="class1">Clase 1</option>
         <option value="class2">Clase 2</option>
         <option value="class3">Clase 3</option>
@@ -67,7 +69,17 @@
                 var claseSeleccionada = $("#claseSelect").val();
                 var colorSeleccionado = $("#colorInput").val();
 
-                var elementos = $(etiquetaSeleccionada + "." + claseSeleccionada);
+                var elementos;
+                
+                if (etiquetaSeleccionada === "all" && claseSeleccionada === "allClass") {
+                    elementos = $(".parrafosYCabeceras *");
+                } else if (etiquetaSeleccionada === "all") {
+                    elementos = $("." + claseSeleccionada);
+                } else if (claseSeleccionada === "allClass") {
+                    elementos = $(etiquetaSeleccionada);
+                } else {
+                    elementos = $(etiquetaSeleccionada + "." + claseSeleccionada);
+                }
 
                 elementos.css("color", colorSeleccionado);
             });
