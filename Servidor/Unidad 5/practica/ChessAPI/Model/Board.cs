@@ -149,10 +149,10 @@ namespace ChessAPI.Model
         {
             return board[row, column];
         }
-        public MovementAPI IsValid(int fromRow, int fromColumn, int toRow, int toColumn)
+        public MovementAPI IsValid(int fromColumn,int fromRow, int toColumn, int toRow)
         {
-            Movement movement = new Movement(fromColumn,fromRow,toRow,toColumn);
-            Piece piece = board[fromColumn, fromRow];
+            Movement movement = new Movement(fromRow,fromColumn,toRow,toColumn);
+            Piece piece = board[fromRow,fromColumn];
             if(movement.IsValid())
             {
                 if(piece.Validate(movement, board)!= Piece.MovementType.InvalidNormalMovement)

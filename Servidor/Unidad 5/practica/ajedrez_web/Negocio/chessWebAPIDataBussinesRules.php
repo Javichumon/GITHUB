@@ -16,5 +16,10 @@ class chessWebAPIDataBussinesRules
         return $dataAccessObject->getBoardState($board);
         
     }
+    public function getMovement($board,$fromRow,$fromColumn,$toRow,$toColumn)
+    {
+        $dataAccessObject = new ChessWebAPIDataAccess();
+        return $dataAccessObject->getMovement($board,$fromRow,$fromColumn,$toRow,$toColumn);
+    }
 }
 ?>

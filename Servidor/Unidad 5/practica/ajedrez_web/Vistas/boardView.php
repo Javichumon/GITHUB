@@ -51,15 +51,16 @@ $perfilUsuario = $_SESSION['perfil'];
     </nav>
     <main>
         <?php
-
-        $boardStatus = ",KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL,,PABL,PABL,PABL,PABL,PABL,PABL,PABL,,,,,,,,,,,,,,,,,ROBL,,,,,,,,,,,,,,,,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH";
+        $boardStatus = "ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,,,PABL,PABL,PABL,PABL,PABL,PABL,,,,,,,,,,,,,,,,,ROBL,,,,,,,,,,,,,,,,,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH";
 
         function getScoreGame($boardStatus){
         require("../Negocio/chessWebAPIDataBussinesRules.php");
         $chessWebAPIBusiness = new ChessWebAPIDataBussinesRules();
-
-        $boardState = $chessWebAPIBusiness->getBoardState($boardStatus);
         
+        $boardState = $chessWebAPIBusiness->getBoardState($boardStatus);
+        $boardMovement = $chessWebAPIBusiness->getMovement($board,$fromRow,$fromColumn,$toRow,$toColumn);
+
+
         $valorMaterialPiezasBlancas = $boardState['valorMaterialPiezasBlancas'];
         $valorMaterialPiezasNegras = $boardState['valorMaterialPiezasNegras'];
         $mensajeDistancia = $boardState['mensajeDistancia'];
@@ -70,6 +71,9 @@ $perfilUsuario = $_SESSION['perfil'];
         echo '<p class="mensajeMaterial">' . $mensajeDistancia . '</p>';
         echo '</div>';
         }
+        
+        $movimientoValido = $boardMovement['movementStatus'];
+        $valorMovimiento = $boardMovement['board'];
         ?>
 
        
