@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Battle</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #battle-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #pokemon-images {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .pokemon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pokemon-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .attacks-list {
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .attacks-list button {
+            margin: 5px;
+        }
+
+        .health-bar-container {
+            width: 150px;
+            height: 20px;
+            background-color: #ddd;
+            margin-top: 10px;
+        }
+
+        .health-bar {
+            height: 100%;
+            width: 100%;
+            background-color: #4caf50;
+            transition: width 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Pokémon Battle</h1>
+
+    <div id="battle-container">
+        <div id="player1" class="pokemon-container">
+            <h2>Player 1</h2>
+            <select id="pokemon1" onchange="showPokemonImage('pokemon1'); loadAttacks('player1')">
+                <option value="charizard">Charizard</option>
+                <option value="blastoise">Blastoise</option>
+                <option value="venusaur">Venusaur</option>
+            </select>
+            <img id="pokemon-image1" class="pokemon-image" src="" alt="Pokemon 1">
+            <div id="attacks1" class="attacks-list"></div>
+            <div class="health-bar-container">
+                <div id="health-bar1" class="health-bar"></div>
+            </div>
+        </div>
+
+        <div id="player2" class="pokemon-container">
+            <h2>Player 2</h2>
+            <select id="pokemon2" onchange="showPokemonImage('pokemon2'); loadAttacks('player2')">
+                <option value="charizard">Charizard</option>
+                <option value="blastoise">Blastoise</option>
+                <option value="venusaur">Venusaur</option>
+            </select>
+            <img id="pokemon-image2" class="pokemon-image" src="" alt="Pokemon 2">
+            <div id="attacks2" class="attacks-list"></div>
+            <div class="health-bar-container">
+                <div id="health-bar2" class="health-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        // Información sobre los Pokémon y sus ataques
+        const pokemonData = {
+            charizard: {
+                type: 'fire',
+                attacks: ['Flamethrower'],
+                image: 'Charizard.png',
+                health: 100
+            },
+            blastoise: {
+                type: 'water',
+                attacks: ['Surf'],
+                image: 'Blastoise.png',
+                health: 100
+            },
+            venusaur: {
+                type: 'grass',
+                attacks: ['Razor Leaf'],
+                image: 'Venusaur.png',
+                health: 100
+            }
+        };
+
+        // Función para mostrar la imagen del Pokémon seleccionado
+        function showPokemonImage(player) {
+            const selectedPokemon = document.getElementById(`pokemon${player.charAt(player.length - 1)}`).value;
+            const imgElement = document.getElementById(`pokemon-image${player.charAt(player.length - 1)}`);
+            imgElement.src = pokemonData[selectedPokemon].image;
+        }
+
+        // Función para cargar los ataques del Pokémon seleccionado
+        function loadAttacks(player) {
+            const selectedPokemon = document.getElementById(`pokemon${player.charAt(player.length - 1)}`).value;
+            const attacksElement = document.getElementById(`attacks${player.charAt(player.length - 1)}`);
+            const attacks = pokemonData[selectedPokemon].attacks;
+
+            // Crear botones de ataques
+            attacksElement.innerHTML = '<strong>Attacks:</strong>';
+            attacks.forEach(attack => {
+                const attackButton = document.createElement('button');
+                attackButton.textContent = attack;
+                attackButton.onclick = function () {
+                    attack(player, attack);
+                };
+                attacksElement.appendChild(attackButton);
+            });
+        }
+
+        // Función para realizar el ataque
+        function attack(player, selectedAttack) {
+            const attackerPokemon = document.getElementById(`pokemon${player.charAt(player.length - 1)}`).value;
+            const defenderPokemon = document.getElementById(player === 'player1' ? 'pokemon2' : 'pokemon1').value;
+
+            // Simular la eficacia del ataque según los tipos de Pokémon
+            const effectiveness = calculateEffectiveness(pokemonData[attackerPokemon].type, pokemonData[defenderPokemon].type);
+
+            // Simular el resultado de la batalla con un mensaje
+            const result = simulateBattle(attackerPokemon, defenderPokemon, selectedAttack, effectiveness);
+
+            // Actualizar la barra de vida
+            updateHealthBar();
+
+            // Mostrar el resultado en la página
+            document.getElementById('result').innerText = result;
+        }
+
+        // Función para calcular la eficacia del ataque según los tipos de Pokémon
+        function calculateEffectiveness(attackerType, defenderType) {
+            if (attackerType === 'fire' && defenderType === 'grass') {
+                return 2; // Fire is strong against Grass
+            } else if (attackerType === 'water' && defenderType === 'fire') {
+                return 2; // Water is strong against Fire
+            } else if (attackerType === 'grass' && defenderType === 'water') {
+                return 2; // Grass is strong against Water
+            } else if (attackerType === 'fire' && defenderType === 'water') {
+                return 0.5; // Fire is weak against Water
+            } else if (attackerType === 'water' && defenderType === 'grass') {
+                return 0.5; // Water is weak against Grass
+            } else if (attackerType === 'grass' && defenderType === 'fire') {
+                return 0.5; // Grass is weak against Fire
+            } else {
+                return 1; // Neutral effectiveness
+            }
+        }
+
+        // Función para simular el resultado de la batalla
+        function simulateBattle(attackerPokemon, defenderPokemon, selectedAttack, effectiveness) {
+            // Obtener el daño del ataque seleccionado
+            const attackDamage = getAttackDamage(selectedAttack);
+
+            // Simular la reducción de puntos de vida según la eficacia
+            const finalDamage = Math.round(attackDamage * effectiveness);
+
+            // Reducir la salud del Pokémon defensor
+            pokemonData[defenderPokemon].health -= finalDamage;
+
+            // Comprobar si la salud es menor o igual a cero
+            if (pokemonData[defenderPokemon].health <= 0) {
+                pokemonData[defenderPokemon].health = 0;
+                return `${attackerPokemon} ataca a ${defenderPokemon} con ${selectedAttack}! ${defenderPokemon} ha sido derrotado.`;
+            } else {
+                return `${attackerPokemon} ataca a ${defenderPokemon} con ${selectedAttack}! ${defenderPokemon} pierde ${finalDamage} puntos de vida. ${defenderPokemon} tiene ${pokemonData[defenderPokemon].health} puntos de vida restantes.`;
+            }
+        }
+
+        // Función para obtener el daño del ataque seleccionado
+        function getAttackDamage(attack) {
+            // En este caso, cada ataque quitará 30 de vida
+            return 30;
+        }
+
+        // Función para actualizar la barra de vida
+        function updateHealthBar() {
+            for (let i = 1; i <= 2; i++) {
+                const health = pokemonData[`pokemon${i}`].health;
+                const healthBar = document.getElementById(`health-bar${i}`);
+                const percentage = (health / 100) * 100;
+                healthBar.style.width = `${percentage}%`;
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tres en raya</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #tablero {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      gap: 5px;
+      margin-top: 20px;
+    }
+
+    .casilla {
+      width: 100px;
+      height: 100px;
+      border: 2px solid #333;
+      font-size: 2em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tres en raya</h1>
+  <p>Turno del jugador X</p>
+
+  <div id="tablero"></div>
+
+  <script>
+    let tablero = [
+      ['', '', ''],
+      ['', '', ''],
+      ['', '', '']
+    ];
+
+    let jugadorActual = 'X';
+
+    function iniciarJuego() {
+      const contenedorTablero = document.getElementById('tablero');
+
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          const casilla = document.createElement('div');
+          casilla.className = 'casilla';
+          casilla.setAttribute('data-fila', i);
+          casilla.setAttribute('data-columna', j);
+          casilla.addEventListener('click', hacerMovimiento);
+          contenedorTablero.appendChild(casilla);
+        }
+      }
+    }
+
+    function hacerMovimiento(event) {
+      const fila = event.target.getAttribute('data-fila');
+      const columna = event.target.getAttribute('data-columna');
+
+      if (tablero[fila][columna] === '') {
+        tablero[fila][columna] = jugadorActual;
+        event.target.textContent = jugadorActual;
+
+        if (verificarGanador()) {
+          alert(`¡Jugador ${jugadorActual} ha ganado!`);
+          reiniciarJuego();
+        } else if (tableroLleno()) {
+          alert('¡Empate!');
+          reiniciarJuego();
+        } else {
+          jugadorActual = (jugadorActual === 'X') ? 'O' : 'X';
+          document.querySelector('p').textContent = `Turno del jugador ${jugadorActual}`;
+        }
+      }
+    }
+
+    function verificarGanador() {
+      // Verificar filas y columnas
+      for (let i = 0; i < 3; i++) {
+        if (
+          (tablero[i][0] === jugadorActual && tablero[i][1] === jugadorActual && tablero[i][2] === jugadorActual) ||
+          (tablero[0][i] === jugadorActual && tablero[1][i] === jugadorActual && tablero[2][i] === jugadorActual)
+        ) {
+          return true;
+        }
+      }
+
+      // Verificar diagonales
+      if (
+        (tablero[0][0] === jugadorActual && tablero[1][1] === jugadorActual && tablero[2][2] === jugadorActual) ||
+        (tablero[0][2] === jugadorActual && tablero[1][1] === jugadorActual && tablero[2][0] === jugadorActual)
+      ) {
+        return true;
+      }
+
+      return false;
+    }
+
+    function tableroLleno() {
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          if (tablero[i][j] === '') {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
+    function reiniciarJuego() {
+      tablero = [
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
+      ];
+
+      jugadorActual = 'X';
+
+      const casillas = document.querySelectorAll('.casilla');
+      casillas.forEach(casilla => {
+        casilla.textContent = '';
+      });
+
+      document.querySelector('p').textContent = 'Turno del jugador X';
+    }
+
+    // Iniciar el juego al cargar la página
+    window.onload = iniciarJuego;
+  </script>
+
+</body>
+</html>
