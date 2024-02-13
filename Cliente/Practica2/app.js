@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         else if (cardsChosen[0] === cardsChosen[1]) {
             alert('Has encontrado una coincidencia')
-            cards[optionOneId].setAttribute('src', 'img/white.png')
-            cards[optionTwoId].setAttribute('src', 'img/white.png')
+            // cards[optionOneId].setAttribute('src', 'img/white.png')
+            // cards[optionTwoId].setAttribute('src', 'img/white.png')
             cards[optionOneId].removeEventListener('click', flipCard)
             cards[optionTwoId].removeEventListener('click', flipCard)
             cardsWon.push(cardsChosen)
