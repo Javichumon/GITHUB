@@ -14,6 +14,8 @@ $perfilUsuario = $_SESSION['perfil'];
     <title>Board</title>
     <link rel="stylesheet" type="text/css" href="../style.css">
     <link rel="icon" type="image/png" href="../img/icon.jpg">
+    <script src="../jquery-3.7.1.min.js"></script>
+    <script src="movimiento.js"></script>
 </head>
 
 <body>
@@ -51,37 +53,60 @@ $perfilUsuario = $_SESSION['perfil'];
     </nav>
     <main>
         <?php
-        $boardStatus = "ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,,,PABL,PABL,PABL,PABL,PABL,PABL,,,,,,,,,,,,,,,,,ROBL,,,,,,,,,,,,,,,,,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH";
-
-        function getScoreGame($boardStatus){
+        $boardStatus = "ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH";
         require("../Negocio/chessWebAPIDataBussinesRules.php");
         $chessWebAPIBusiness = new ChessWebAPIDataBussinesRules();
+      
+        // if(isset($_GET['estadoTablero'])){
+        //     $estadoTablero = $_GET['estadoTablero'];
+        //     var_dump($estadoTablero);
+        //     $boardStatus = $estadoTablero;
         
-        $boardState = $chessWebAPIBusiness->getBoardState($boardStatus);
-        $boardMovement = $chessWebAPIBusiness->getMovement($board,$fromRow,$fromColumn,$toRow,$toColumn);
+        //     echo 'Estado del tablero recibido correctamente';
+        // }
 
+        function getScoreGame($boardStatus)
+        {
 
-        $valorMaterialPiezasBlancas = $boardState['valorMaterialPiezasBlancas'];
-        $valorMaterialPiezasNegras = $boardState['valorMaterialPiezasNegras'];
-        $mensajeDistancia = $boardState['mensajeDistancia'];
+            $chessWebAPIBusiness = new ChessWebAPIDataBussinesRules();
+            $boardState = $chessWebAPIBusiness->getBoardState($boardStatus);
 
-        echo '<div class="mensajeValor">';
-        echo '<p class="mensajeMaterial"> Valor material de las piezas blancas: ' . $valorMaterialPiezasBlancas . '</p>';
-        echo '<p class="mensajeMaterial"> Valor material de las piezas negras: ' . $valorMaterialPiezasNegras . '</p>';
-        echo '<p class="mensajeMaterial">' . $mensajeDistancia . '</p>';
-        echo '</div>';
+            $valorMaterialPiezasBlancas = $boardState['valorMaterialPiezasBlancas'];
+            $valorMaterialPiezasNegras = $boardState['valorMaterialPiezasNegras'];
+            $mensajeDistancia = $boardState['mensajeDistancia'];
+
+            echo '<div class="mensajeValor">';
+            echo '<p class="mensajeMaterial"> Valor material de las piezas blancas: ' . $valorMaterialPiezasBlancas . '</p>';
+            echo '<p class="mensajeMaterial"> Valor material de las piezas negras: ' . $valorMaterialPiezasNegras . '</p>';
+            echo '<p class="mensajeMaterial">' . $mensajeDistancia . '</p>';
+            echo '</div>';
         }
-        
-        $movimientoValido = $boardMovement['movementStatus'];
-        $valorMovimiento = $boardMovement['board'];
+        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        //     if (isset($_POST['fromRow'], $_POST['fromColumn'], $_POST['toRow'], $_POST['toColumn'], $_POST['pieceType'])) {
+               
+        //         $fromRow = intval($_POST['fromRow']);
+        //         $fromColumn = intval($_POST['fromColumn']);
+        //         $toRow = intval($_POST['toRow']);
+        //         $toColumn = intval($_POST['toColumn']);
+        //         $pieceType = $_POST['pieceType'];
+
+        //         $response = array('success' => true, 'message' => 'Movimiento realizado con éxito');
+        //         echo json_encode($response);
+        //         exit;
+        //     } else {
+        //         $response = array('success' => false, 'message' => 'Parámetros de movimiento no proporcionados');
+        //         echo json_encode($response);
+        //         exit;
+        //     }
+        // }
         ?>
 
-       
         <p>
-            
             <?php
             error_reporting(E_ALL);
             ini_set('display_errors', '1');
+
 
             function DrawChessGame($board)
             {
@@ -116,7 +141,7 @@ $perfilUsuario = $_SESSION['perfil'];
             }
 
             require("../Negocio/chessBusinessRules.php");
-            
+
 
             $gameID = isset($_GET['id']) ? $_GET['id'] : null;
             if ($gameID) {
@@ -157,9 +182,11 @@ $perfilUsuario = $_SESSION['perfil'];
                 DrawChessGame($boardStatus);
                 echo '</div>';
             }
+
             ?>
+
         </p>
-        
+        <div id="estadoTablero"></div>
     </main>
 
     <footer>

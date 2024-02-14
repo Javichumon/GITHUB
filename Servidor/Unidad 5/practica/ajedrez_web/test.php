@@ -44,10 +44,24 @@ function test_verificar_usuario_encontrado3()
     $perfil = $u->verificar('jose','1234');
     return $perfil === $perfil_esperado;
 }
+function test_alta_usuario4()
+{
+    $u = new UserDataAccess();
+    return $u->insertar('carlos','premium','12345678');
+}
 
+function test_verificar_usuario_encontrado4()
+{
+    $perfil_esperado = 'premium';
+    $u = new UserDataAccess();
+    $perfil = $u->verificar('carlos','12345678');
+    return $perfil === $perfil_esperado;
+}
 var_dump(test_alta_usuario());
 var_dump(test_verificar_usuario_encontrado());
 var_dump(test_alta_usuario2());
 var_dump(test_verificar_usuario_encontrado2());
 var_dump(test_alta_usuario3());
 var_dump(test_verificar_usuario_encontrado3());
+var_dump(test_alta_usuario4());
+var_dump(test_verificar_usuario_encontrado4());
