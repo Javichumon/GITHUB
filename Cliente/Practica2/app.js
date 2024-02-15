@@ -1,4 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const playButton = document.getElementById('playButton');
+    const formContainer = document.getElementById('formContainer');
+    const playerForm = document.getElementById('playerForm');
+    const playerNameInput = document.getElementById('playerName');
+    const acceptTermsCheckbox = document.getElementById('acceptTerms');
+    const playerInfo = document.getElementById('playerInfo');
+    const resultDisplay = document.getElementById('result');
+    const scoreValue = document.getElementById('scoreValue');
+
+    playButton.addEventListener('click', () => {
+      playButton.style.display = 'none';
+      formContainer.style.display = 'flex';
+    });
+
+    playerForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const playerName = playerNameInput.value.trim();
+      if (playerName !== '' && acceptTermsCheckbox.checked) {
+        playerInfo.textContent = `Jugador: ${playerName}`;
+        playerInfo.style.display = 'block';
+        formContainer.style.display = 'none';
+        playerNameInput.value = '';
+        acceptTermsCheckbox.checked = false;
+        resultDisplay.style.display = 'block';
+        startMemoryGame(playerName);
+      }
+    });
+
     const cardArray = [
         {
             name: 'charizard',
@@ -53,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cardArray.sort(() => 0.5 - Math.random())
 
     const grid = document.querySelector('.grid')
-    const resultDisplay = document.querySelector('#result')
     let cardsChosen = []
     let cardsChosenId = []
     let cardsWon = []
@@ -76,10 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (optionOneId == optionTwoId) {
             cards[optionOneId].setAttribute('src', 'img/carta.png')
             cards[optionTwoId].setAttribute('src', 'img/carta.png')
-            alert('Has clicado la misma carta...')
+            // alert('Has clicado la misma carta...')
         }
         else if (cardsChosen[0] === cardsChosen[1]) {
-            alert('Has encontrado una coincidencia')
+            // alert('Has encontrado una coincidencia')
             // cards[optionOneId].setAttribute('src', 'img/white.png')
             // cards[optionTwoId].setAttribute('src', 'img/white.png')
             cards[optionOneId].removeEventListener('click', flipCard)
@@ -88,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             cards[optionOneId].setAttribute('src', 'img/carta.png')
             cards[optionTwoId].setAttribute('src', 'img/carta.png')
-            alert('Lo siento, Vuelve a intentarlo')
+            // alert('Lo siento, Vuelve a intentarlo')
         }
         cardsChosen = []
         cardsChosenId = []
@@ -108,5 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    createBoard()
+    function startMemoryGame(playerName) {
+        createBoard();
+      }
+    
 })
